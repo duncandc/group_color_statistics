@@ -141,7 +141,7 @@ def main():
 
         #open catalogue
         catalogue_1 = group_catalogue+'_'+str(boot)
-        print 'opening group catalogue:', group_catalogue_1
+        print 'opening group catalogue:', catalogue_1
         f =  h5py.File(filepath_cat+'bootstraps/'+catalogue_1+'.hdf5', 'r') #open catalogue file
         GC = f.get(catalogue_1)
 
@@ -231,7 +231,7 @@ def main():
 
         #open catalogue
         catalogue_1 = group_catalogue+'_'+str(boot)
-        print 'opening group catalogue:', group_catalogue_1
+        print 'opening group catalogue:', catalogue_1
         f =  h5py.File(filepath_cat+'bootstraps/'+catalogue_1+'.hdf5', 'r') #open catalogue file
         GC = f.get(catalogue_1)
 
@@ -320,7 +320,7 @@ def main():
 
         #open catalogue
         catalogue_1 = group_catalogue+'_'+str(boot)
-        print 'opening group catalogue:', group_catalogue_1
+        print 'opening group catalogue:', catalogue_1
         f =  h5py.File(filepath_cat+'bootstraps/'+catalogue_1+'.hdf5', 'r') #open catalogue file
         GC = f.get(catalogue_1)
 
