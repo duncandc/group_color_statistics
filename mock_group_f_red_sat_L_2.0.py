@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+
+#Duncan Campbell
+#September 2, 2012
+#Yale University
+#Plot the red fraction of satellites and centrals as a function of galaxy luminosity.
+#Includes group finder runs on mock results, intrinsic mock results, and bootstrapped 
+#error bars.
+
 import numpy as np
 import h5py
 import matplotlib
@@ -9,23 +18,35 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 def main():
 
-    catalogue = sys.argv[1]
+    #process user input
+    if len(sys.argv)==2:
+        catalogue = sys.argv[1]
+    else:
+        catalogue = 'Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle'
+    print "running for:", catalogue
 
-    fig1, axes = plt.subplots(nrows=2, ncols=3, sharex=True, sharey=True, figsize=(6.95, 6.6-0.99))
+    #setup figure
+    fig1, axes = plt.subplots(nrows=2, ncols=3, sharex=True, sharey=True, 
+                              figsize=(6.95, 6.6-0.99))
     fig1.subplots_adjust(hspace=0, wspace=0.05)
     fig1.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
     axes = axes.flatten()
 
+    #get figure saving information
     plotpath = cu.get_plot_path() + 'analysis/groupcats/'
     filename = catalogue+'_f_red_sat_L'
 
-    N_boots = 50
+    #number of bootstraps per group catalogue.
+    N_boots = 3
 
-###################################################################################################################################
+#run code for Berlind group catalogue
+##########################################################################################
 
     group_cat = 'berlind'
-    filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/custom_catalogues/'
-    filepath_cat  = cu.get_output_path() + 'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
+    filepath_mock = cu.get_output_path() +\ 
+        'processed_data/hearin_mocks/custom_catalogues/'
+    filepath_cat  = cu.get_output_path() +\ 
+        'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
 
     if group_cat=='tinker': group_catalogue = catalogue+'_clf_groups_M19'
     if group_cat=='berlind': group_catalogue = catalogue+'_groups'
@@ -177,8 +198,8 @@ def main():
     ax.set_ylabel(r'$f_{sat}$')
     ax.legend((p1b,p2b),('halo red cen/sat','halo blue cen/sat'), loc='upper right', fontsize=10, numpoints=1, frameon=False)
 
-
-###########################################################################################################################
+#run code for Tinker group catalogue
+##########################################################################################
 
     group_cat = 'tinker'
     filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/custom_catalogues/'
@@ -332,10 +353,9 @@ def main():
     ax.set_xlim([9.5,10.7])
     ax.legend((p3b,p4b),('group red cen/sat','group blue cen/sat'), loc='upper right', fontsize=10, numpoints=1, frameon=False)
 
-   
-###########################################################################################################################3
+#run code for Yang group catalogue
+##########################################################################################
 
-    
     group_cat = 'yang'
     filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/custom_catalogues/'
     filepath_cat  = cu.get_output_path() + 'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
@@ -495,8 +515,7 @@ def main():
     plt.show()
     fig1.savefig(plotpath+filename+'.pdf', dpi=400, bbox_inches='tight')
 
- 
-          
+
 def solar_lum(M,Msol):
     L = ((Msol-M)/2.5)
     return L  
