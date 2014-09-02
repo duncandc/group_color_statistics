@@ -68,7 +68,6 @@ def main():
     f_sat_red = np.zeros(len(bin_centers))
     f_sat_blue = np.zeros(len(bin_centers))
     for i in range(0,len(bins)-1):
-        print i
         ind = np.where(result==i+1)[0]
         centrals_in_bin = np.in1d(ind,centrals)
         centrals_in_bin = ind[centrals_in_bin]
@@ -142,7 +141,7 @@ def main():
 
         #open catalogue
         catalogue_1 = group_catalogue+'_'+str(boot)
-        print 'opening group catalogue:', group_catalogue
+        print 'opening group catalogue:', group_catalogue_1
         f =  h5py.File(filepath_cat+'bootstraps/'+catalogue_1+'.hdf5', 'r') #open catalogue file
         GC = f.get(catalogue_1)
 
@@ -161,7 +160,6 @@ def main():
         result = np.digitize(L,bins=bins)
 
         for i in range(0,len(bins)-1):
-            print i
             ind = np.where(result==i+1)[0]
             centrals_in_bin = np.in1d(ind,centrals)
             centrals_in_bin = ind[centrals_in_bin]
@@ -233,7 +231,7 @@ def main():
 
         #open catalogue
         catalogue_1 = group_catalogue+'_'+str(boot)
-        print 'opening group catalogue:', group_catalogue
+        print 'opening group catalogue:', group_catalogue_1
         f =  h5py.File(filepath_cat+'bootstraps/'+catalogue_1+'.hdf5', 'r') #open catalogue file
         GC = f.get(catalogue_1)
 
@@ -252,7 +250,6 @@ def main():
         result = np.digitize(L,bins=bins)
 
         for i in range(0,len(bins)-1):
-            print i
             ind = np.where(result==i+1)[0]
             centrals_in_bin = np.in1d(ind,centrals)
             centrals_in_bin = ind[centrals_in_bin]
@@ -323,7 +320,7 @@ def main():
 
         #open catalogue
         catalogue_1 = group_catalogue+'_'+str(boot)
-        print 'opening group catalogue:', group_catalogue
+        print 'opening group catalogue:', group_catalogue_1
         f =  h5py.File(filepath_cat+'bootstraps/'+catalogue_1+'.hdf5', 'r') #open catalogue file
         GC = f.get(catalogue_1)
 
@@ -342,7 +339,6 @@ def main():
         result = np.digitize(L,bins=bins)
 
         for i in range(0,len(bins)-1):
-            print i
             ind = np.where(result==i+1)[0]
             centrals_in_bin = np.in1d(ind,centrals)
             centrals_in_bin = ind[centrals_in_bin]
