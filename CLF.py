@@ -1,5 +1,8 @@
+#!/usr/bin/env python
+
 #Duncan Campbell
 #April 7, 2014
+#Yale University
 #Calculate the conditonal luminosity function
 
 def main():
