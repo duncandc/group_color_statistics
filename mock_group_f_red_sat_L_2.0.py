@@ -223,7 +223,7 @@ def main():
     group_cat = 'tinker'
     filepath_cat  = cu.get_output_path() + \
         'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
-     group_catalogue = catalogue+'_clf_groups_M19'
+    group_catalogue = catalogue+'_clf_groups_M19'
 
     f_red_cen = np.zeros((N_boots,len(bin_centers)))
     f_red_sat = np.zeros((N_boots,len(bin_centers)))
