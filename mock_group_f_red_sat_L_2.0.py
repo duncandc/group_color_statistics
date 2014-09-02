@@ -39,17 +39,11 @@ def main():
     #number of bootstraps per group catalogue.
     N_boots = 3
 
-#run code for Berlind group catalogue
+#run code for intrinsic mock results
 ##########################################################################################
 
-    group_cat = 'berlind'
     filepath_mock = cu.get_output_path() + \
         'processed_data/hearin_mocks/custom_catalogues/'
-    filepath_cat  = cu.get_output_path() + \
-        'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
-
-    if group_cat=='tinker': group_catalogue = catalogue+'_clf_groups_M19'
-    if group_cat=='berlind': group_catalogue = catalogue+'_groups'
 
     print 'opening mock catalogue:', catalogue+'.hdf5'
     #open catalogue
@@ -114,6 +108,34 @@ def main():
     ax=axes[3]
     p1b, = ax.plot(bin_centers,f_sat_red,color='red')
     p2b, = ax.plot(bin_centers,f_sat_blue,color='blue')
+    
+    ax=axes[1]
+    ax.set_xlim([9.5,10.8])
+    ax.set_ylim([0,1])
+    p1a, = ax.plot(bin_centers,f_red_cen,color='orange')
+    p2a, = ax.plot(bin_centers,f_red_sat,color='green')
+    
+    ax=axes[4]
+    p1b, = ax.plot(bin_centers,f_sat_red,color='red')
+    p2b, = ax.plot(bin_centers,f_sat_blue,color='blue')
+    
+    ax=axes[2]
+    ax.set_xlim([9.5,10.8])
+    ax.set_ylim([0,1])
+    p1a, = ax.plot(bin_centers,f_red_cen,color='orange')
+    p2a, = ax.plot(bin_centers,f_red_sat,color='green')
+    
+    ax=axes[5]
+    p1b, = ax.plot(bin_centers,f_sat_red,color='red')
+    p2b, = ax.plot(bin_centers,f_sat_blue,color='blue')
+
+#run code for Berlind group catalogue
+##########################################################################################
+
+    group_cat = 'berlind'
+    filepath_cat  = cu.get_output_path() + \
+        'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
+    group_catalogue = catalogue+'_groups'
 
     f_red_cen = np.zeros((N_boots,len(bin_centers)))
     f_red_sat = np.zeros((N_boots,len(bin_centers)))
@@ -202,8 +224,10 @@ def main():
 ##########################################################################################
 
     group_cat = 'tinker'
-    filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/custom_catalogues/'
-    filepath_cat  = cu.get_output_path() + 'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
+    filepath_mock = cu.get_output_path() + \
+        'processed_data/hearin_mocks/custom_catalogues/'
+    filepath_cat  = cu.get_output_path() + \
+        'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
 
     if group_cat=='tinker': group_catalogue = catalogue+'_clf_groups_M19'
     if group_cat=='berlind': group_catalogue = catalogue+'_groups'
@@ -357,8 +381,10 @@ def main():
 ##########################################################################################
 
     group_cat = 'yang'
-    filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/custom_catalogues/'
-    filepath_cat  = cu.get_output_path() + 'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
+    filepath_mock = cu.get_output_path() + \
+        'processed_data/hearin_mocks/custom_catalogues/'
+    filepath_cat  = cu.get_output_path() + \
+        'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
 
     if group_cat=='tinker': group_catalogue = catalogue+'_clf_groups_M19'
     if group_cat=='berlind': group_catalogue = catalogue+'_groups'
