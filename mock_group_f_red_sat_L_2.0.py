@@ -43,9 +43,9 @@ def main():
 ##########################################################################################
 
     group_cat = 'berlind'
-    filepath_mock = cu.get_output_path() +\ 
+    filepath_mock = cu.get_output_path() + \
         'processed_data/hearin_mocks/custom_catalogues/'
-    filepath_cat  = cu.get_output_path() +\ 
+    filepath_cat  = cu.get_output_path() + \
         'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
 
     if group_cat=='tinker': group_catalogue = catalogue+'_clf_groups_M19'
