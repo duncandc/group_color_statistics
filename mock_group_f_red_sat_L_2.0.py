@@ -9,12 +9,9 @@
 
 import numpy as np
 import h5py
-import matplotlib
 import matplotlib.pyplot as plt
 import custom_utilities as cu
-from astropy import cosmology
 import sys
-from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 def main():
 
@@ -224,76 +221,9 @@ def main():
 ##########################################################################################
 
     group_cat = 'tinker'
-    filepath_mock = cu.get_output_path() + \
-        'processed_data/hearin_mocks/custom_catalogues/'
     filepath_cat  = cu.get_output_path() + \
         'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
-
-    if group_cat=='tinker': group_catalogue = catalogue+'_clf_groups_M19'
-    if group_cat=='berlind': group_catalogue = catalogue+'_groups'
-
-    print 'opening mock catalogue:', catalogue+'.hdf5'
-    #open catalogue
-    f1 = h5py.File(filepath_mock+catalogue+'.hdf5', 'r') #open catalogue file
-    mock = f1.get(catalogue)
-    
-    centrals   = np.where(mock['ID_host']==-1)
-    satellites = np.where(mock['ID_host']!=-1)
-    
-    #galaxy color
-    color = mock['g-r']
-    LHS   = 0.21-0.03*mock['M_r,0.1']
-    blue  = np.where(color<LHS)[0] #indices of blue galaxies
-    red   = np.where(color>LHS)[0] #indicies of red galaxies
-    
-    S_r = 4.64
-    L = solar_lum(mock['M_r,0.1'],S_r)
-
-    bins = np.arange(9.5,10.8,0.1)
-    bin_centers = (bins[:-1]+bins[1:])/2.0
-    result = np.digitize(L,bins=bins)
-     
-    f_red_cen = np.zeros(len(bin_centers))
-    f_red_sat = np.zeros(len(bin_centers))
-    f_sat_red = np.zeros(len(bin_centers))
-    f_sat_blue = np.zeros(len(bin_centers))
-    for i in range(0,len(bins)-1):
-        print i
-        ind = np.where(result==i+1)[0]
-        centrals_in_bin = np.in1d(ind,centrals)
-        centrals_in_bin = ind[centrals_in_bin]
-        satellites_in_bin = np.in1d(ind,satellites)
-        satellites_in_bin = ind[satellites_in_bin]
-
-        red_centrals = np.in1d(centrals_in_bin,red)
-        red_centrals = centrals_in_bin[red_centrals]
-        red_satellites = np.in1d(satellites_in_bin,red)
-        red_satellites = satellites_in_bin[red_satellites]
-
-        blue_centrals = np.in1d(centrals_in_bin,blue)
-        blue_centrals = centrals_in_bin[blue_centrals]
-        blue_satellites = np.in1d(satellites_in_bin,blue)
-        blue_satellites = satellites_in_bin[blue_satellites]
-
-        if (len(red_centrals)+len(blue_centrals)) > 0:
-            f_red_cen[i] = float(len(red_centrals))/(len(red_centrals)+len(blue_centrals))
-        if (len(red_satellites)+len(blue_satellites)) > 0:
-            f_red_sat[i] = float(len(red_satellites))/(len(red_satellites)+len(blue_satellites))
-
-        #f_sat_red[i] = float(len(red_satellites))/(len(centrals_in_bin)+len(satellites_in_bin))
-        #f_sat_blue[i] = float(len(blue_satellites))/(len(centrals_in_bin)+len(satellites_in_bin))
-        f_sat_red[i] = float(len(red_satellites))/(len(red_centrals)+len(red_satellites))
-        f_sat_blue[i] = float(len(blue_satellites))/(len(blue_centrals)+len(blue_satellites))
-
-    ax=axes[1]
-    ax.set_xlim([9.5,10.8])
-    ax.set_ylim([0,1])
-    #ax.set_ylabel(r'$f_{red}$')
-    p1a, = ax.plot(bin_centers,f_red_cen,color='orange')
-    p2a, = ax.plot(bin_centers,f_red_sat,color='green')
-    ax=axes[4]
-    p1b, = ax.plot(bin_centers,f_sat_red,color='red')
-    p2b, = ax.plot(bin_centers,f_sat_blue,color='blue')
+     group_catalogue = catalogue+'_clf_groups_M19'
 
     f_red_cen = np.zeros((N_boots,len(bin_centers)))
     f_red_sat = np.zeros((N_boots,len(bin_centers)))
@@ -381,79 +311,9 @@ def main():
 ##########################################################################################
 
     group_cat = 'yang'
-    filepath_mock = cu.get_output_path() + \
-        'processed_data/hearin_mocks/custom_catalogues/'
     filepath_cat  = cu.get_output_path() + \
         'processed_data/'+group_cat+'_groupcat/mock_runs/4th_run/custom_catalogues/'
-
-    if group_cat=='tinker': group_catalogue = catalogue+'_clf_groups_M19'
-    if group_cat=='berlind': group_catalogue = catalogue+'_groups'
-    if group_cat=='yang': group_catalogue = catalogue+'_groups'
-
-    
-    print 'opening mock catalogue:', catalogue+'.hdf5'
-    #open catalogue
-    f1 = h5py.File(filepath_mock+catalogue+'.hdf5', 'r') #open catalogue file
-    mock = f1.get(catalogue)
-    
-    centrals   = np.where(mock['ID_host']==-1)
-    satellites = np.where(mock['ID_host']!=-1)
-    
-    #galaxy color
-    color = mock['g-r']
-    LHS   = 0.21-0.03*mock['M_r,0.1']
-    blue  = np.where(color<LHS)[0] #indices of blue galaxies
-    red   = np.where(color>LHS)[0] #indicies of red galaxies
-    
-    S_r = 4.64
-    L = solar_lum(mock['M_r,0.1'],S_r)
-
-    bins = np.arange(9.5,10.8,0.1)
-    bin_centers = (bins[:-1]+bins[1:])/2.0
-    result = np.digitize(L,bins=bins)
-     
-    f_red_cen = np.zeros(len(bin_centers))
-    f_red_sat = np.zeros(len(bin_centers))
-    f_sat_red = np.zeros(len(bin_centers))
-    f_sat_blue = np.zeros(len(bin_centers))
-    for i in range(0,len(bins)-1):
-        print i
-        ind = np.where(result==i+1)[0]
-        centrals_in_bin = np.in1d(ind,centrals)
-        centrals_in_bin = ind[centrals_in_bin]
-        satellites_in_bin = np.in1d(ind,satellites)
-        satellites_in_bin = ind[satellites_in_bin]
-
-        red_centrals = np.in1d(centrals_in_bin,red)
-        red_centrals = centrals_in_bin[red_centrals]
-        red_satellites = np.in1d(satellites_in_bin,red)
-        red_satellites = satellites_in_bin[red_satellites]
-
-        blue_centrals = np.in1d(centrals_in_bin,blue)
-        blue_centrals = centrals_in_bin[blue_centrals]
-        blue_satellites = np.in1d(satellites_in_bin,blue)
-        blue_satellites = satellites_in_bin[blue_satellites]
-
-        if (len(red_centrals)+len(blue_centrals)) > 0:
-            f_red_cen[i] = float(len(red_centrals))/(len(red_centrals)+len(blue_centrals))
-        if (len(red_satellites)+len(blue_satellites)) > 0:
-            f_red_sat[i] = float(len(red_satellites))/(len(red_satellites)+len(blue_satellites))
-
-        #f_sat_red[i] = float(len(red_satellites))/(len(centrals_in_bin)+len(satellites_in_bin))
-        #f_sat_blue[i] = float(len(blue_satellites))/(len(centrals_in_bin)+len(satellites_in_bin))
-        f_sat_red[i] = float(len(red_satellites))/(len(red_centrals)+len(red_satellites))
-        f_sat_blue[i] = float(len(blue_satellites))/(len(blue_centrals)+len(blue_satellites))
-
-    ax=axes[2]
-    ax.set_xlim([9.5,10.8])
-    ax.set_ylim([0,1])
-    #ax.set_ylabel(r'$f_{red}$')
-    p1a, = ax.plot(bin_centers,f_red_cen,color='orange')
-    p2a, = ax.plot(bin_centers,f_red_sat,color='green')
-    ax=axes[5]
-    p1b, = ax.plot(bin_centers,f_sat_red,color='red')
-    p2b, = ax.plot(bin_centers,f_sat_blue,color='blue')
-
+    group_catalogue = catalogue+'_groups'
     
     f_red_cen = np.zeros((N_boots,len(bin_centers)))
     f_red_sat = np.zeros((N_boots,len(bin_centers)))
@@ -537,6 +397,9 @@ def main():
     ax.set_xticks([9.6,9.8,10.0,10.2,10.4,10.6])
     ax.set_xlim([9.5,10.7])
     ax.set_yticks([0,0.2,0.4,0.6,0.8])
+
+#plot results, show, and save.
+##########################################################################################
 
     plt.show()
     fig1.savefig(plotpath+filename+'.pdf', dpi=400, bbox_inches='tight')
