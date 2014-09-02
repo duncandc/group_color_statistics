@@ -1,6 +1,9 @@
+#!/usr/bin/env python
+
 #Duncan Campbell
 #April 7, 2014
-#Calculate the halo transiton probability function.
+#Yale University
+#Calculate the halo occupation distribution.
 
 def main():
     import numpy as np

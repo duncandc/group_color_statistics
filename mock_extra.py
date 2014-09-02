@@ -84,7 +84,7 @@ def main():
         data['RANK'][members]    = rank
         #record number of satellites in the group
         data['N_sat'][members]   = len(satellites)
-        sat_red  = np.where(np.in1d(satellites,red)==True)[0]                   
+        sat_red  = np.where(np.in1d(satellites,red)==True)[0]
         data['N_sat_red'][members]  = len(sat_red)
         sat_blue = np.where(np.in1d(satellites,blue)==True)[0]
         data['N_sat_blue'][members] = len(sat_blue)

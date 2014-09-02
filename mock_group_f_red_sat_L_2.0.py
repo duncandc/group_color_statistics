@@ -5,7 +5,7 @@
 #Yale University
 #Plot the red fraction of satellites and centrals as a function of galaxy luminosity.
 #Includes group finder runs on mock results, intrinsic mock results, and bootstrapped 
-#error bars.
+#error bars. This is figure 4 as of 9/2/14.
 
 import numpy as np
 import h5py

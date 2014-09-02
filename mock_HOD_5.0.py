@@ -3,7 +3,8 @@
 #Duncan Campbell
 #April 8, 2014
 #Yale University
-#Calculate the colorsplit HOD for the three groupfinders on one of the mocks
+#Plot the HOD of the group finder runs on a mock and the intrinsic mock results. Includes 
+#bootstrap error bars.
 
 #load packages
 import numpy as np
