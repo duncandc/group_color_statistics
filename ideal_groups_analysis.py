@@ -20,7 +20,7 @@ def main():
     mock1 = f1.get(catalogue)
     
     #open mock catalogue
-    filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/ideal_mocks/
+    filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/ideal_mocks/'
     catalogue = catalogue+'_groups'
     print 'opening mock catalogue:', catalogue+'.hdf5'
     f2 = h5py.File(filepath_mock+catalogue+'.hdf5', 'r') #open catalogue file
