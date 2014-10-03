@@ -22,7 +22,7 @@ def main():
     if len(sys.argv)>1: catalogue = sys.argv[1]
     else: catalogue = 'Mr19_age_distribution_matching_mock'
     
-    savepath = cu.get_output_path() + 'processed_data/hearin_mocks/ideal_mocks/'
+    savepath = cu.get_output_path() + 'processed_data/hearin_mocks/ideal_groups/'
 
     #open mock catalogue
     filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/custom_catalogues/'
