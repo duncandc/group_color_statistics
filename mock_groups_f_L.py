@@ -126,13 +126,13 @@ def main():
     f_sat_red = np.zeros((len(bin_centers)))
     f_sat_blue = np.zeros((len(bin_centers)))
 
-    centrals_ind   = np.where(GC['HALO_RANK']==1)[0]
-    satellites_ind = np.where(GC['HALO_RANK']!=1)[0]
-    centrals_bool   = (GC['HALO_RANK']==1)
-    satellites_bool = (GC['HALO_RANK']!=1)
+    centrals_ind   = np.where(GC['HALO_RANK']==0)[0]
+    satellites_ind = np.where(GC['HALO_RANK']==1)[0]
+    centrals_bool   = (GC['HALO_RANK']==0)
+    satellites_bool = (GC['HALO_RANK']==1)
 
-    centrals_mock_ind   = np.where(GC['HALO_RANK']==1)[0]
-    satellites_mock_ind = np.where(GC['HALO_RANK']!=1)[0]
+    centrals_mock_ind   = np.where(GC['HALO_RANK']==0)[0]
+    satellites_mock_ind = np.where(GC['HALO_RANK']==1)[0]
     N_sat_mock = float(len(satellites_mock_ind))
     N_cen_mock = float(len(centrals_mock_ind))
     
