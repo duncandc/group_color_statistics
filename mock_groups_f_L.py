@@ -142,7 +142,7 @@ def main():
     f_sat_mock = N_sat_mock/(N_sat_mock+N_cen_mock)
     f_sat_ideal_groups = N_sat_ideal_groups/(N_sat_ideal_groups+N_cen_ideal_groups)
     
-    f_sat_err = np.len(np.where((GC['RANK']>0).astype(int)!=GC['HALO_RANK'])[0])
+    f_sat_err = len(np.where((GC['RANK']>0).astype(int)!=GC['HALO_RANK'])[0])/(float(N_sat_ideal_groups))
     print f_sat_mock, f_sat_ideal_groups, f_sat_err
     
     
