@@ -72,6 +72,59 @@ def main():
     p1a, = ax.plot(bin_centers,f_red_cen,color='orange')
     p2a, = ax.plot(bin_centers,f_red_sat,color='green')
 
+
+    ###################################################
+    # Ideal Groups
+    ###################################################
+    filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/ideal_groups/'
+    print 'opening mock catalogue:', catalogue+'_groups.hdf5'
+    f1 = h5py.File(filepath_mock+catalogue+'_groups.hdf5', 'r') #open catalogue file
+    GC = f1.get(catalogue+'_groups')
+
+    f_red_cen = np.zeros((len(bin_centers)))
+    f_red_sat = np.zeros((len(bin_centers)))
+    f_sat_red = np.zeros((len(bin_centers)))
+    f_sat_blue = np.zeros((len(bin_centers)))
+    
+    #open catalogue
+    catalogue_1 = group_catalogue+'_'+str(boot)
+    f =  h5py.File(filepath_cat+'bootstraps/'+catalogue_1+'.hdf5', 'r') #open catalogue file
+    GC = f.get(catalogue_1)
+
+    centrals_ind   = np.where(GC['RANK']==0)[0]
+    satellites_ind = np.where(GC['RANK']!=0)[0]
+    centrals_bool   = (GC['RANK']==0)
+    satellites_bool = (GC['RANK']!=0)
+
+    centrals_mock_ind   = np.where(GC['HALO_RANK']==1)[0]
+    satellites_mock_ind = np.where(GC['HALO_RANK']!=1)[0]
+    N_sat_mock = float(len(satellites_mock_ind))
+    N_cen_mock = float(len(centrals_mock_ind))
+    
+    #galaxy color
+    color = GC['M_g,0.1']-GC['M_r,0.1']
+    LHS   = 0.7 - 0.032*(GC['M_r,0.1']+16.5) #Weinmann 2006
+    blue_ind  = np.where(color<LHS)[0] #indices of blue galaxies
+    red_ind   = np.where(color>LHS)[0] #indicies of red galaxies
+    blue_bool = (color<LHS) #indices of blue galaxies
+    red_bool  = (color>LHS) #indicies of red galaxies
+
+    f_red_cen  = f_prop(GC['MGROUP'],bins,red_ind,blue_ind,centrals_bool)
+    f_red_sat  = f_prop(GC['MGROUP'],bins,red_ind,blue_ind,satellites_bool)
+    f_sat_red  = f_prop(GC['MGROUP'],bins,satellites_ind,centrals_ind,red_bool)
+    f_sat_blue = f_prop(GC['MGROUP'],bins,satellites_ind,centrals_ind,blue_bool)
+
+    ax=axes[0]
+    p1a, = ax.plot(bin_centers,f_red_cen,color='orange', alpha=0.5)
+    p2a, = ax.plot(bin_centers,f_red_sat,color='green', alpha=0.5)
+    ax=axes[1]
+    p1a, = ax.plot(bin_centers,f_red_cen,color='orange', alpha=0.5)
+    p2a, = ax.plot(bin_centers,f_red_sat,color='green', alpha=0.5)
+    ax=axes[2]
+    p1a, = ax.plot(bin_centers,f_red_cen,color='orange', alpha=0.5)
+    p2a, = ax.plot(bin_centers,f_red_sat,color='green', alpha=0.5)
+
+
     ###################################################
     groupcat='berlind'
     filepath_cat=get_gc_path(groupcat)
