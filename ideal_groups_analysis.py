@@ -25,9 +25,6 @@ def main():
     print 'opening mock catalogue:', catalogue+'.hdf5'
     f2 = h5py.File(filepath_mock+catalogue+'.hdf5', 'r') #open catalogue file
     mock2 = f2.get(catalogue)
-    
-    print mock1.dtype.names
-    print mock2.dtype.names
 
     ind = np.where(mock2['MGROUP']==-99.9)[0]
     print len(ind)

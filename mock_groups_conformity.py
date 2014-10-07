@@ -12,6 +12,9 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 def main():
     catalogue_1 = sys.argv[1]
     catalogue_2 = sys.argv[2]
+    
+    plot_path_11 = cu.get_plot_path() + 'analysis/groupcats/'
+    catalogue_11 = catalogue_1
 
     N_boots = 50
 
@@ -1343,8 +1346,8 @@ def main():
 
     plt.show(block=True)
 
-    filename='conformity_'+catalogue+'.eps'
-    fig.savefig(plotpath+filename)
+    filename='conformity_'+catalogue_11+'.eps'
+    fig.savefig(plot_path_11+filename)
 
     print plotpath+filename
 
