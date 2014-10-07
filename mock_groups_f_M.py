@@ -111,14 +111,14 @@ def main():
     f_sat_blue = f_prop(GC['MGROUP'],bins,satellites_ind,centrals_ind,blue_bool)
 
     ax=axes[0]
-    p1a, = ax.plot(bin_centers,f_red_cen,color='orange', alpha=0.5)
-    p2a, = ax.plot(bin_centers,f_red_sat,color='green', alpha=0.5)
+    p1a, = ax.plot(bin_centers,f_red_cen,':',color='orange', alpha=0.5)
+    p2a, = ax.plot(bin_centers,f_red_sat,':',color='green', alpha=0.5)
     ax=axes[1]
-    p1a, = ax.plot(bin_centers,f_red_cen,color='orange', alpha=0.5)
-    p2a, = ax.plot(bin_centers,f_red_sat,color='green', alpha=0.5)
+    p1a, = ax.plot(bin_centers,f_red_cen,':',color='orange', alpha=0.5)
+    p2a, = ax.plot(bin_centers,f_red_sat,':',color='green', alpha=0.5)
     ax=axes[2]
-    p1a, = ax.plot(bin_centers,f_red_cen,color='orange', alpha=0.5)
-    p2a, = ax.plot(bin_centers,f_red_sat,color='green', alpha=0.5)
+    p1a, = ax.plot(bin_centers,f_red_cen,':',color='orange', alpha=0.5)
+    p2a, = ax.plot(bin_centers,f_red_sat,':',color='green', alpha=0.5)
     
     #with cen/sat but not mass estimate
     centrals_ind   = np.where(GC['RANK']==0)[0]
@@ -179,14 +179,14 @@ def main():
     f_sat_blue = f_prop(GC['MGROUP'],bins,satellites_ind,centrals_ind,blue_bool)
 
     ax=axes[0]
-    p1a, = ax.plot(bin_centers,f_red_cen,'--',color='orange', alpha=0.5)
-    p2a, = ax.plot(bin_centers,f_red_sat,'--',color='green', alpha=0.5)
+    p1a, = ax.plot(bin_centers,f_red_cen,'-',color='orange', alpha=0.5)
+    p2a, = ax.plot(bin_centers,f_red_sat,'-',color='green', alpha=0.5)
     ax=axes[1]
-    p1a, = ax.plot(bin_centers,f_red_cen,'--',color='orange', alpha=0.5)
-    p2a, = ax.plot(bin_centers,f_red_sat,'--',color='green', alpha=0.5)
+    p1a, = ax.plot(bin_centers,f_red_cen,'-',color='orange', alpha=0.5)
+    p2a, = ax.plot(bin_centers,f_red_sat,'-',color='green', alpha=0.5)
     ax=axes[2]
-    p1a, = ax.plot(bin_centers,f_red_cen,'--',color='orange', alpha=0.5)
-    p2a, = ax.plot(bin_centers,f_red_sat,'--',color='green', alpha=0.5)
+    p1a, = ax.plot(bin_centers,f_red_cen,'-',color='orange', alpha=0.5)
+    p2a, = ax.plot(bin_centers,f_red_sat,'-',color='green', alpha=0.5)
 
 
     ###################################################
