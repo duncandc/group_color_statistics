@@ -168,8 +168,8 @@ def main():
     bins = np.arange(10,15,0.2)
     bin_centers = (bins[:-1]+bins[1:])/2.0
 
-    centrals   = np.where(GC['RANK']==1)[0]
-    satellites = np.where(GC['RANK']==0)[0]
+    centrals   = np.where(GC['HALO_RANK']==1)[0]
+    satellites = np.where(GC['HALO_RANK']==0)[0]
     color = GC['M_g,0.1']-GC['M_r,0.1']
     LHS   = 0.7 - 0.032*(GC['M_r,0.1']+16.5) #Weinmann 2006
     blue  = np.where(color<LHS)[0] 
