@@ -258,7 +258,8 @@ def main():
     host_ID = GC['GROUP_ID']
     L = solar_lum(GC['M_r,0.1'],S_r)
     
-    halo_mass = GC['HALO_M']
+    #halo_mass = GC['HALO_M']
+    halo_mass = GC['MGROUP']
     
     mass_bin = [12.5,13.0]
     phi_1 = clf(host_ID,L,bins,halo_mass,mass_bin)
