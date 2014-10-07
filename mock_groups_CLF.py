@@ -258,38 +258,40 @@ def main():
     host_ID = GC['GROUP_ID']
     L = solar_lum(GC['M_r,0.1'],S_r)
     
+    halo_mass = GC['HALO_M']
+    
     mass_bin = [12.5,13.0]
-    phi_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin)
+    phi_1 = clf(host_ID,L,bins,halo_mass,mass_bin)
     mask=red&centrals
-    phi_red_cen_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_red_cen_1 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
     mask=blue&centrals
-    phi_blue_cen_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_blue_cen_1 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
     mask=red&satellites
-    phi_red_sat_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_red_sat_1 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
     mask=blue&satellites
-    phi_blue_sat_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_blue_sat_1 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
 
     mass_bin = [13.0,13.5]
-    phi_2 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin)
+    phi_2 = clf(host_ID,L,bins,halo_mass,mass_bin)
     mask=red&centrals
-    phi_red_cen_2 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_red_cen_2 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
     mask=blue&centrals
-    phi_blue_cen_2 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_blue_cen_2 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
     mask=red&satellites
-    phi_red_sat_2 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_red_sat_2 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
     mask=blue&satellites
-    phi_blue_sat_2= clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_blue_sat_2= clf(host_ID,L,bins,halo_mass,mass_bin,mask)
 
     mass_bin = [13.5,14.0]
-    phi_3 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin)
+    phi_3 = clf(host_ID,L,bins,halo_mass,mass_bin)
     mask=red&centrals
-    phi_red_cen_3 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_red_cen_3 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
     mask=blue&centrals
-    phi_blue_cen_3 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_blue_cen_3 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
     mask=red&satellites
-    phi_red_sat_3 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_red_sat_3 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
     mask=blue&satellites
-    phi_blue_sat_3 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_blue_sat_3 = clf(host_ID,L,bins,halo_mass,mass_bin,mask)
     
     #plot the results
     ax=axes[0]
