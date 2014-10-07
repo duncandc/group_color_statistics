@@ -85,11 +85,6 @@ def main():
     f_red_sat = np.zeros((len(bin_centers)))
     f_sat_red = np.zeros((len(bin_centers)))
     f_sat_blue = np.zeros((len(bin_centers)))
-    
-    #open catalogue
-    catalogue_1 = group_catalogue+'_'+str(boot)
-    f =  h5py.File(filepath_cat+'bootstraps/'+catalogue_1+'.hdf5', 'r') #open catalogue file
-    GC = f.get(catalogue_1)
 
     centrals_ind   = np.where(GC['RANK']==0)[0]
     satellites_ind = np.where(GC['RANK']!=0)[0]
