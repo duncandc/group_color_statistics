@@ -241,6 +241,176 @@ def main():
 
 
     ##########################
+    #calculate for ideal groups
+    ########################## 
+    filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/ideal_groups/'
+    print 'opening mock catalogue:', catalogue+'_groups.hdf5'
+    f1 = h5py.File(filepath_mock+catalogue+'_groups.hdf5', 'r') #open catalogue file
+    GC = f1.get(catalogue+'_groups')
+
+    centrals   = np.array(GC['RANK']==0)
+    satellites = np.array(GC['RANK']>0)
+    color = GC['M_g,0.1']-GC['M_r,0.1']
+    LHS   = 0.7 - 0.032*(GC['M_r,0.1']+16.5) #Weinmann 2006
+    blue  = np.array(color<LHS) 
+    red   = np.array(color>LHS)
+
+    host_ID = GC['GROUP_ID']
+    L = solar_lum(GC['M_r,0.1'],S_r)
+    
+    mass_bin = [12.5,13.0]
+    phi_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin)
+    mask=red&centrals
+    phi_red_cen_1] = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    mask=blue&centrals
+    phi_blue_cen_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    mask=red&satellites
+    phi_red_sat_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    mask=blue&satellites
+    phi_blue_sat_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+
+    mass_bin = [13.0,13.5]
+    phi_2 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin)
+    mask=red&centrals
+    phi_red_cen_2 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    mask=blue&centrals
+    phi_blue_cen_2 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    mask=red&satellites
+    phi_red_sat_2 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    mask=blue&satellites
+    phi_blue_sat_2= clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+
+    mass_bin = [13.5,14.0]
+    phi_3 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin)
+    mask=red&centrals
+    phi_red_cen_3 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    mask=blue&centrals
+    phi_blue_cen_3 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    mask=red&satellites
+    phi_red_sat_3 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    mask=blue&satellites
+    phi_blue_sat_3 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    
+    #plot the results
+    ax=axes[0]
+    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax=axes[0]
+    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax=axes[0]
+    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax=axes[3]
+    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax=axes[3]
+    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax=axes[3]
+    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax=axes[6]
+    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax=axes[6]
+    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax=axes[6]
+    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax=axes[0]
+    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[0]
+    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax=axes[3]
+    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[3]
+    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax=axes[6]
+    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[6]
+    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+
+    mass_bin = [13.0,13.5]
+    phi = clf(host_ID,L,bins,mock['M_host'],mass_bin)
+    mask = red & centrals
+    phi_red_cen = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
+    mask = blue & centrals
+    phi_blue_cen = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
+    mask = red & satellites
+    phi_red_sat = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
+    mask = blue & satellites
+    phi_blue_sat = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
+    print phi_blue_sat
+    #plot the results
+    ax=axes[1]
+    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax=axes[1]
+    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax=axes[1]
+    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax=axes[4]
+    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax=axes[4]
+    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax=axes[4]
+    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax=axes[7]
+    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax=axes[7]
+    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax=axes[7]
+    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax=axes[1]
+    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[1]
+    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax=axes[4]
+    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[4]
+    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax=axes[7]
+    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[7]
+    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+
+    mass_bin = [13.5,14.0]
+    phi = clf(host_ID,L,bins,mock['M_host'],mass_bin)
+    mask = red & centrals
+    phi_red_cen = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
+    mask = blue & centrals
+    phi_blue_cen = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
+    mask = red & satellites
+    phi_red_sat = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
+    mask = blue & satellites
+    phi_blue_sat = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
+    print phi_blue_sat
+    #plot the results
+    ax=axes[2]
+    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax=axes[2]
+    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax=axes[2]
+    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax=axes[5]
+    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax=axes[5]
+    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax=axes[5]
+    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax=axes[8]
+    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax=axes[8]
+    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax=axes[8]
+    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax=axes[2]
+    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[2]
+    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax=axes[5]
+    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[5]
+    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax=axes[8]
+    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[8]
+    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+
+
+    ##########################
     #calculate mock groups CLF
     ##########################
     group_cat = 'berlind_groupcat'
