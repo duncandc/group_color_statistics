@@ -248,8 +248,8 @@ def main():
     f1 = h5py.File(filepath_mock+catalogue+'_groups.hdf5', 'r') #open catalogue file
     GC = f1.get(catalogue+'_groups')
 
-    centrals   = np.array(GC['RANK']==0)
-    satellites = np.array(GC['RANK']>0)
+    centrals   = np.array(GC['HALO_RANK']==0)
+    satellites = np.array(GC['HALO_RANK']>0)
     color = GC['M_g,0.1']-GC['M_r,0.1']
     LHS   = 0.7 - 0.032*(GC['M_r,0.1']+16.5) #Weinmann 2006
     blue  = np.array(color<LHS) 
