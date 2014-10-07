@@ -152,6 +152,67 @@ def main():
     ax.plot(10**bin_centers, avg_N_red, color='red')
     ax=axes[8]
     ax.plot(10**bin_centers, avg_N_blue, color='blue')
+    
+    ##########################
+    #calculate ideal groups HOD
+    ########################## 
+    filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/ideal_groups/'
+    print 'opening mock catalogue:', catalogue+'_groups.hdf5'
+    #open catalogue
+    f1 = h5py.File(filepath_mock+catalogue+'_groups.hdf5', 'r') #open catalogue file
+    GC = f1.get(catalogue+'_groups')
+    GC = np.array(GC)
+    print 'length:', len(GC)
+    for name in GC.dtype.names: print '     ', name
+
+    bins = np.arange(10,15,0.2)
+    bin_centers = (bins[:-1]+bins[1:])/2.0
+
+    centrals   = np.where(GC['RANK']==1)[0]
+    satellites = np.where(GC['RANK']==0)[0]
+    color = GC['M_g,0.1']-GC['M_r,0.1']
+    LHS   = 0.7 - 0.032*(GC['M_r,0.1']+16.5) #Weinmann 2006
+    blue  = np.where(color<LHS)[0] 
+    red   = np.where(color>LHS)[0]
+
+    Ngal = np.zeros(len(GC))
+    Ngal[:] = 1
+    host_ID = GC['GROUP_ID']
+
+    print len(np.unique(host_ID)), len(centrals)
+    
+    #All galaxies
+    mask = np.zeros(len(GC))
+    mask[:] = 1
+    avg_N_all = hod(host_ID,GC['MGROUP'],Ngal,bins,mask)
+    #Red Galaxies
+    mask = np.zeros(len(GC))
+    mask[red] = 1
+    avg_N_red = hod(host_ID,GC['MGROUP'],Ngal,bins,mask)
+    #Blue Galaxies
+    mask = np.zeros(len(GC))
+    mask[blue] = 1
+    avg_N_blue = hod(host_ID,GC['MGROUP'],Ngal,bins,mask)
+
+    #plot the results
+    ax=axes[0]
+    p1a,=ax.plot(10**bin_centers, avg_N_all, color='black', alpha=0.5)
+    ax=axes[1]
+    p2a,=ax.plot(10**bin_centers, avg_N_red, color='red', alpha=0.5)
+    ax=axes[2]
+    p3a,=ax.plot(10**bin_centers, avg_N_blue, color='blue', alpha=0.5)
+    ax=axes[3]
+    ax.plot(10**bin_centers, avg_N_all, color='black', alpha=0.5)
+    ax=axes[4]
+    ax.plot(10**bin_centers, avg_N_red, color='red', alpha=0.5)
+    ax=axes[5]
+    ax.plot(10**bin_centers, avg_N_blue, color='blue', alpha=0.5)
+    ax=axes[6]
+    ax.plot(10**bin_centers, avg_N_all, color='black', alpha=0.5)
+    ax=axes[7]
+    ax.plot(10**bin_centers, avg_N_red, color='red', alpha=0.5)
+    ax=axes[8]
+    ax.plot(10**bin_centers, avg_N_blue, color='blue', alpha=0.5)
 
     ##########################
     #calculate mock groups HOD
