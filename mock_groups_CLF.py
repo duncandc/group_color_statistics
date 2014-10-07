@@ -261,7 +261,7 @@ def main():
     mass_bin = [12.5,13.0]
     phi_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin)
     mask=red&centrals
-    phi_red_cen_1] = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
+    phi_red_cen_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
     mask=blue&centrals
     phi_blue_cen_1 = clf(host_ID,L,bins,GC['MGROUP'],mass_bin,mask)
     mask=red&satellites
@@ -293,121 +293,97 @@ def main():
     
     #plot the results
     ax=axes[0]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    p1a,=ax.plot(bin_centers, phi_1, color='black', alpha=0.5)
     ax=axes[0]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    p2a,=ax.plot(bin_centers, phi_red_cen_1, '--', color='red', alpha=0.5)
     ax=axes[0]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_cen_1, '--', color='blue', alpha=0.5)
     ax=axes[3]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    p1a,=ax.plot(bin_centers, phi_1, color='black', alpha=0.5)
     ax=axes[3]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    p2a,=ax.plot(bin_centers, phi_red_cen_1, '--', color='red', alpha=0.5)
     ax=axes[3]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_cen_1, '--', color='blue', alpha=0.5)
     ax=axes[6]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    p1a,=ax.plot(bin_centers, phi_1, color='black', alpha=0.5)
     ax=axes[6]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    p2a,=ax.plot(bin_centers, phi_red_cen_1, '--', color='red', alpha=0.5)
     ax=axes[6]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_cen_1, '--', color='blue', alpha=0.5)
     ax=axes[0]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p2a,=ax.plot(bin_centers, phi_red_sat_1, color='red', alpha=0.5)
     ax=axes[0]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_sat_1, color='blue', alpha=0.5)
     ax=axes[3]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p2a,=ax.plot(bin_centers, phi_red_sat_1, color='red', alpha=0.5)
     ax=axes[3]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_sat_1, color='blue', alpha=0.5)
     ax=axes[6]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p2a,=ax.plot(bin_centers, phi_red_sat_1, color='red', alpha=0.5)
     ax=axes[6]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_sat_1, color='blue', alpha=0.5)
 
-    mass_bin = [13.0,13.5]
-    phi = clf(host_ID,L,bins,mock['M_host'],mass_bin)
-    mask = red & centrals
-    phi_red_cen = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
-    mask = blue & centrals
-    phi_blue_cen = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
-    mask = red & satellites
-    phi_red_sat = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
-    mask = blue & satellites
-    phi_blue_sat = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
-    print phi_blue_sat
-    #plot the results
     ax=axes[1]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    p1a,=ax.plot(bin_centers, phi_2, color='black', alpha=0.5)
     ax=axes[1]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    p2a,=ax.plot(bin_centers, phi_red_cen_2, '--', color='red', alpha=0.5)
     ax=axes[1]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_cen_2, '--', color='blue', alpha=0.5)
     ax=axes[4]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    p1a,=ax.plot(bin_centers, phi_2, color='black', alpha=0.5)
     ax=axes[4]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    p2a,=ax.plot(bin_centers, phi_red_cen_2, '--', color='red', alpha=0.5)
     ax=axes[4]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_cen_2, '--', color='blue', alpha=0.5)
     ax=axes[7]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    p1a,=ax.plot(bin_centers, phi_2, color='black', alpha=0.5)
     ax=axes[7]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    p2a,=ax.plot(bin_centers, phi_red_cen_2, '--', color='red', alpha=0.5)
     ax=axes[7]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_cen_2, '--', color='blue', alpha=0.5)
     ax=axes[1]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p2a,=ax.plot(bin_centers, phi_red_sat_2, color='red', alpha=0.5)
     ax=axes[1]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_sat_2, color='blue', alpha=0.5)
     ax=axes[4]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p2a,=ax.plot(bin_centers, phi_red_sat_2, color='red', alpha=0.5)
     ax=axes[4]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_sat_2, color='blue', alpha=0.5)
     ax=axes[7]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p2a,=ax.plot(bin_centers, phi_red_sat_2, color='red', alpha=0.5)
     ax=axes[7]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_sat_2, color='blue', alpha=0.5)
 
-    mass_bin = [13.5,14.0]
-    phi = clf(host_ID,L,bins,mock['M_host'],mass_bin)
-    mask = red & centrals
-    phi_red_cen = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
-    mask = blue & centrals
-    phi_blue_cen = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
-    mask = red & satellites
-    phi_red_sat = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
-    mask = blue & satellites
-    phi_blue_sat = clf(host_ID,L,bins,mock['M_host'],mass_bin,mask)
-    print phi_blue_sat
-    #plot the results
     ax=axes[2]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    p1a,=ax.plot(bin_centers, phi_3, color='black', alpha=0.5)
     ax=axes[2]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    p2a,=ax.plot(bin_centers, phi_red_cen_3, '--', color='red', alpha=0.5)
     ax=axes[2]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_cen_3, '--', color='blue', alpha=0.5)
     ax=axes[5]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    p1a,=ax.plot(bin_centers, phi_3, color='black', alpha=0.5)
     ax=axes[5]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    p2a,=ax.plot(bin_centers, phi_red_cen_3, '--', color='red', alpha=0.5)
     ax=axes[5]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_cen_3, '--', color='blue', alpha=0.5)
     ax=axes[8]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    p1a,=ax.plot(bin_centers, phi_3, color='black', alpha=0.5)
     ax=axes[8]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    p2a,=ax.plot(bin_centers, phi_red_cen_3, '--', color='red', alpha=0.5)
     ax=axes[8]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_cen_3, '--', color='blue', alpha=0.5)
     ax=axes[2]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p2a,=ax.plot(bin_centers, phi_red_sat_3, color='red', alpha=0.5)
     ax=axes[2]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_sat_3, color='blue', alpha=0.5)
     ax=axes[5]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p2a,=ax.plot(bin_centers, phi_red_sat_3, color='red', alpha=0.5)
     ax=axes[5]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_sat_3, color='blue', alpha=0.5)
     ax=axes[8]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p2a,=ax.plot(bin_centers, phi_red_sat_3, color='red', alpha=0.5)
     ax=axes[8]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_sat_3, color='blue', alpha=0.5)
 
 
     ##########################
