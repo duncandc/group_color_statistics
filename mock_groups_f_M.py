@@ -11,7 +11,7 @@ def main():
     catalogue = sys.argv[1]
     plotpath = cu.get_plot_path() + 'analysis/groupcats/'
 
-    filename = catalogue+'_mock_group_f_red_sat_M.eps'
+    filename = catalogue+'_f_M.eps'
 
     fig1, axes = plt.subplots(nrows=1, ncols=3, sharex=True, sharey=True, figsize=(6.95, 3.3))
     fig1.subplots_adjust(hspace=0, wspace=0.05)

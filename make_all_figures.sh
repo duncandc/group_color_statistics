@@ -48,8 +48,8 @@ cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_s
 cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_f_L.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_3.eps
 cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_f_M.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_4.eps
 cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_CLF.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_5.eps
-cp /scratch/dac29/plots/analysis/groupcats/conformity_Mr19_age_distribution_matching_mock.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_6.eps
-cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_preformace_M.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_8a.eps
-cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_preformace_L.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_8b.eps
+cp /scratch/dac29/plots/analysis/groupcats/conformity_Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_6.eps
+cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_performace_M.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_8a.eps
+cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_performace_L.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_8b.eps
 
 
