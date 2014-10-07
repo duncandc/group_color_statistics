@@ -347,7 +347,7 @@ def main():
     p4a=ax.errorbar(bin_centers, f_red_sat, yerr=err_sat,fmt='o',color='green', mec='none', ms=3)
 
    
-    plt.show()
+    plt.show(block=False)
 
     fig1.savefig(plotpath+filename)
   

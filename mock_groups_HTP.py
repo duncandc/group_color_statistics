@@ -51,7 +51,7 @@ def main():
 
     #plot the results
     fig = plot_htp(H_cc, H_sc, H_ss, H_cs, mass_bins)
-    plt.show()
+    plt.show(block=False)
     print plotpath+filename+'.eps'
     fig.savefig(plotpath+filename+'.eps') 
 

@@ -493,7 +493,7 @@ def main():
     p4b_1, = ax.plot(bin_centers,f_sat_blue_1,'o',color='blue', mfc='none', mec='blue', ms=3)
     '''
 
-    plt.show()
+    plt.show(block=False)
     print plotpath+filename+'.eps'
     fig1.savefig(plotpath+filename+'.eps')
     

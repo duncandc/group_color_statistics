@@ -89,7 +89,7 @@ def main():
     ax.plot(bin_centers,result2, color='green',ls='--')
     ax.plot(bin_centers,result3, color='orange',ls='-')
     ax.plot(bin_centers,result4, color='orange',ls='--')
-    plt.show()
+    plt.show(block=False)
 
     print plotpath+filename1+'.eps'
     fig1.savefig(plotpath+filename1+'.eps')
@@ -169,7 +169,7 @@ def main():
     ax.plot(bin_centers,result2, color='green',ls='--')
     ax.plot(bin_centers,result3, color='orange',ls='-')
     ax.plot(bin_centers,result4, color='orange',ls='--')
-    plt.show()
+    plt.show(block=False)
 
     print plotpath+filename2+'.eps'
     fig2.savefig(plotpath+filename2+'.eps')

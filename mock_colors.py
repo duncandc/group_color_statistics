@@ -58,7 +58,7 @@ def main():
     ax.set_yticks(np.arange(0,1.5,0.1), minor=True)
     ax.set_xticks(np.arange(-22,-18,1))
     ax.set_xticks(np.arange(-22.5,-18.5,0.5), minor=True)
-    plt.show(block=True)
+    plt.show(block=False)
     filename = catalogue+'_Mr_colors'
     fig.savefig(plotpath+filename+'.eps', dpi=400)
 

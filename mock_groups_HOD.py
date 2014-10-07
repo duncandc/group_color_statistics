@@ -407,7 +407,7 @@ def main():
     ax = axes[8]
     p3b = ax.errorbar(10**(bin_centers), avg_N_blue, yerr=avg_N_blue_err, fmt='o', color='blue', ms=3, mec='none')
 
-    plt.show()
+    plt.show(block=False)
     print plotpath+filename+'.eps'
     fig.savefig(plotpath+filename+'.eps')
 

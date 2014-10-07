@@ -762,7 +762,7 @@ def main():
     ax.plot(bin_centers,phi_red_sat_3, 'o', color='red', ms=4, mec='none')
     ax.plot(bin_centers,phi_blue_sat_3, 'o', color='blue', ms=4, mec='none')
 
-    plt.show()
+    plt.show(block=False)
     print plotpath+filename+'.eps'
     fig.savefig(plotpath+filename+'.eps')
 
