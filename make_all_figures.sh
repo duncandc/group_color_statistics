@@ -40,16 +40,16 @@ wait
 
 
 #move all the figures into a folder containing only figures used in the paper.
-cp /scratch/dac29/plots/analysis/hearin_mocks/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_Mr_colors.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_1.eps
-cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_HOD.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_2.eps
-cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_f_L.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_3.eps
-cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_f_M.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_4.eps
-cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_CLF.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_5.eps
-cp /scratch/dac29/plots/analysis/groupcats/conformity_Mr19_age_distribution_matching_mock.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_6.eps
-cp /scratch/dac29/plots/analysis/berlind_groupcat/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_HTP.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_7a.eps
-cp /scratch/dac29/plots/analysis/tinker_groupcat/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_HTP.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_7b.eps
-cp /scratch/dac29/plots/analysis/yang_groupcat/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_HTP.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_7c.eps
-cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_performance_M.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_8a.eps
-cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_performance_L.eps  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_8b.eps
+cp /scratch/dac29/plots/analysis/hearin_mocks/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_Mr_colors.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_1.pdf
+cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_HOD.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_2.pdf
+cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_f_L.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_3.pdf
+cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_f_M.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_4.pdf
+cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_CLF.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_5.pdf
+cp /scratch/dac29/plots/analysis/groupcats/conformity_Mr19_age_distribution_matching_mock.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_6.pdf
+cp /scratch/dac29/plots/analysis/berlind_groupcat/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_HTP.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_7a.pdf
+cp /scratch/dac29/plots/analysis/tinker_groupcat/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_HTP.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_7b.pdf
+cp /scratch/dac29/plots/analysis/yang_groupcat/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_HTP.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_7c.pdf
+cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_performance_M.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_8a.pdf
+cp /scratch/dac29/plots/analysis/groupcats/Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle_performance_L.pdf  /scratch/dac29/python_scripts/group_color_statistics/paper_figures/fig_8b.pdf
 
 
