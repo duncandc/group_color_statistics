@@ -60,7 +60,7 @@ def main():
     ax.set_xticks(np.arange(-22.5,-18.5,0.5), minor=True)
     plt.show(block=False)
     filename = catalogue+'_Mr_colors'
-    fig.savefig(plotpath+filename+'.eps', dpi=400)
+    fig.savefig(plotpath+filename+'.pdf', dpi=400)
 
     fig = plt.figure(figsize=(3.3,3.3))
     ax = fig.add_subplot(1,1,1)

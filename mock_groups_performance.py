@@ -91,8 +91,8 @@ def main():
     ax.plot(bin_centers,result4, color='orange',ls='--')
     plt.show(block=False)
 
-    print plotpath+filename1+'.eps'
-    fig1.savefig(plotpath+filename1+'.eps')
+    print plotpath+filename1+'.pdf'
+    fig1.savefig(plotpath+filename1+'.pdf')
 
     bins = np.arange(9.4,10.8,0.1)
     bin_centers = (bins[:-1]+bins[1:])/2.0
@@ -171,8 +171,8 @@ def main():
     ax.plot(bin_centers,result4, color='orange',ls='--')
     plt.show(block=False)
 
-    print plotpath+filename2+'.eps'
-    fig2.savefig(plotpath+filename2+'.eps')
+    print plotpath+filename2+'.pdf'
+    fig2.savefig(plotpath+filename2+'.pdf')
 
 def sp_in_mass_bins(GC,bins):
     x=np.zeros(len(bins)-1)

@@ -494,8 +494,8 @@ def main():
     '''
 
     plt.show(block=False)
-    print plotpath+filename+'.eps'
-    fig1.savefig(plotpath+filename+'.eps')
+    print plotpath+filename+'.pdf'
+    fig1.savefig(plotpath+filename+'.pdf')
     
 
 def f_prop(prop,prop_bins,group_1,group_2,mask):

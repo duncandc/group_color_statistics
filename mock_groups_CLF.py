@@ -763,8 +763,8 @@ def main():
     ax.plot(bin_centers,phi_blue_sat_3, 'o', color='blue', ms=4, mec='none')
 
     plt.show(block=False)
-    print plotpath+filename+'.eps'
-    fig.savefig(plotpath+filename+'.eps')
+    print plotpath+filename+'.pdf'
+    fig.savefig(plotpath+filename+'.pdf')
 
 def solar_lum(M,Msol):
     L = ((Msol-M)/2.5)

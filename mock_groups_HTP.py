@@ -52,8 +52,8 @@ def main():
     #plot the results
     fig = plot_htp(H_cc, H_sc, H_ss, H_cs, mass_bins)
     plt.show(block=False)
-    print plotpath+filename+'.eps'
-    fig.savefig(plotpath+filename+'.eps') 
+    print plotpath+filename+'.pdf'
+    fig.savefig(plotpath+filename+'.pdf') 
 
 def htp(inf_mass, halo_mass, inf_cen, inf_sat, halo_cen, halo_sat, mass_bins):
     #returns the halo transition probability given:

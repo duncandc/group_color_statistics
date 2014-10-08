@@ -1346,7 +1346,7 @@ def main():
 
     plt.show(block=False)
 
-    filename='conformity_'+catalogue_11+'.eps'
+    filename='conformity_'+catalogue_11+'.pdf'
     fig.savefig(plot_path_11+filename)
 
     print plotpath+filename
