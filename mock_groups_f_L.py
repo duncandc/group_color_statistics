@@ -139,14 +139,6 @@ def main():
     N_sat_mock = float(len(satellites_mock_ind))
     N_cen_mock = float(len(centrals_mock_ind))
     
-    #calculate global satellite fractions
-    f_sat_mock = N_sat_mock/(N_sat_mock+N_cen_mock)
-    f_sat_ideal_groups = N_sat_ideal_groups/(N_sat_ideal_groups+N_cen_ideal_groups)
-    
-    f_sat_err = len(np.where((GC['RANK']>0).astype(int)!=GC['HALO_RANK'])[0])/(float(N_sat_ideal_groups))
-    print f_sat_mock, f_sat_ideal_groups, f_sat_err
-    
-    
     #galaxy color
     color = GC['M_g,0.1']-GC['M_r,0.1']
     LHS   = 0.7 - 0.032*(GC['M_r,0.1']+16.5) #Weinmann 2006
