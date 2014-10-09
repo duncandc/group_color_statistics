@@ -22,21 +22,21 @@ def main():
     ax.set_ylim([0,1])
     ax.set_ylabel(r'$f_{red}$')
     ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
-    ax.set_xticks([9.6,9.8,10.0,10.2,10.4,10.6])
+    #ax.set_xticks([9.6,9.8,10.0,10.2,10.4,10.6])
     ax.set_title(r'Berlind FoF groups')
     ax=axes[1]
     ax.set_xlim([11,15])
     ax.set_ylim([0,1])
     ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
-    ax.set_xticks([12.5,13,13.5,14,14.5])
-    ax.set_xlim([12,15])
+    #ax.set_xticks([12.5,13,13.5,14,14.5])
+    #ax.set_xlim([12,15])
     ax.set_title(r'Tinker SO groups')
     ax=axes[2]
     ax.set_xlim([11,15])
     ax.set_ylim([0,1])
     ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
-    ax.set_xticks([12.5,13,13.5,14,14.5])
-    ax.set_xlim([12,15])
+    #ax.set_xticks([12.5,13,13.5,14,14.5])
+    #ax.set_xlim([12,15])
     ax.set_title(r'Yang SO groups')
 
     N_boots = 50
