@@ -21,6 +21,7 @@ def main():
     ax.set_xlim([10**11,10**15])
     ax.set_ylim([0,1])
     ax.set_ylabel(r'$f_{red}$')
+    #ax.set_xlabel(r'$M/[M_{\odot}h^{-1}]$')
     ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
     #ax.set_xticks([11.5,12.0,12.5,13,13.5,14,14.5])
     ax.set_xscale('log')
@@ -28,6 +29,7 @@ def main():
     ax=axes[1]
     ax.set_xlim([10**11,10**15])
     ax.set_ylim([0,1])
+    #ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
     ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
     #ax.set_xticks([11.5,12.0,12.5,13,13.5,14,14.5])
     #ax.set_xlim([12,15])
@@ -36,6 +38,7 @@ def main():
     ax=axes[2]
     ax.set_xlim([10**11,10**15])
     ax.set_ylim([0,1])
+    #ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
     ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
     #ax.set_xticks([11.5,12.0,12.5,13,13.5,14,14.5])
     #ax.set_xlim([12,15])
