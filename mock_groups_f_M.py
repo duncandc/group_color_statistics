@@ -55,7 +55,8 @@ def main():
     
     #galaxy color
     color = mock['g-r']
-    LHS   = 0.21-0.03*mock['M_r,0.1']
+    #LHS   = 0.21-0.03*mock['M_r,0.1']
+    LHS = 0.7 - 0.032*(data['M_r,0.1']+16.5)
     blue  = np.where(color<LHS)[0] #indices of blue galaxies
     red   = np.where(color>LHS)[0] #indicies of red galaxies
 
