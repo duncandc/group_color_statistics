@@ -22,21 +22,25 @@ def main():
     ax.set_ylim([0,1])
     ax.set_ylabel(r'$f_{red}$')
     ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
-    ax.set_xticks([11.5,12.0,12.5,13,13.5,14,14.5])
+    #ax.set_xticks([11.5,12.0,12.5,13,13.5,14,14.5])
+    ax.set_xscale('log')
     ax.set_title(r'Berlind FoF groups')
     ax=axes[1]
     ax.set_xlim([11,15])
     ax.set_ylim([0,1])
     ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
-    ax.set_xticks([11.5,12.0,12.5,13,13.5,14,14.5])
+    #ax.set_xticks([11.5,12.0,12.5,13,13.5,14,14.5])
     #ax.set_xlim([12,15])
+    ax.set_xscale('log')
     ax.set_title(r'Tinker SO groups')
     ax=axes[2]
     ax.set_xlim([11,15])
     ax.set_ylim([0,1])
     ax.set_xlabel(r'$log(M/[M_{\odot}h^{-1}])$')
-    ax.set_xticks([11.5,12.0,12.5,13,13.5,14,14.5])
+    #ax.set_xticks([11.5,12.0,12.5,13,13.5,14,14.5])
     #ax.set_xlim([12,15])
+    ax.set_xscale('log')
+    ax.set_xticklabels(["", "$10^{12}$", "$10^{13}$","$10^{14}$",""])
     ax.set_title(r'Yang SO groups')
 
     N_boots = 50
@@ -46,6 +50,7 @@ def main():
     
     bins = np.arange(12,15,0.2)
     bin_centers = (bins[:-1]+bins[1:])/2.0
+    bin_centers = 10.0**bin_centers
 
     #open mock catalogue
     filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/custom_catalogues/'
@@ -196,6 +201,7 @@ def main():
     ###################################################
     bins = np.arange(11,15,0.2)
     bin_centers = (bins[:-1]+bins[1:])/2.0
+    bin_centers = 10.0**bin_centers
     groupcat='berlind'
     filepath_cat=get_gc_path(groupcat)
     group_catalogue=get_gc_name(groupcat,catalogue)
