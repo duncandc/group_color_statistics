@@ -179,7 +179,8 @@ def main():
     Ngal[:] = 1
     host_ID = GC['GROUP_ID']
     
-    mfactor=-1.0*np.log10(1.0/0.7)
+    #mfactor=-1.0*np.log10(1.0/0.7)
+    mfactor = 0.0
 
     print len(np.unique(host_ID)), len(centrals)
     
