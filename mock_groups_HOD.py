@@ -178,21 +178,23 @@ def main():
     Ngal = np.zeros(len(GC))
     Ngal[:] = 1
     host_ID = GC['GROUP_ID']
+    
+    mfactor=1.0/0.7
 
     print len(np.unique(host_ID)), len(centrals)
     
     #All galaxies
     mask = np.zeros(len(GC))
     mask[:] = 1
-    avg_N_all = hod(host_ID,GC['MGROUP'],Ngal,bins,mask)
+    avg_N_all = hod(host_ID,GC['MGROUP']*mfactor,Ngal,bins,mask)
     #Red Galaxies
     mask = np.zeros(len(GC))
     mask[red] = 1
-    avg_N_red = hod(host_ID,GC['MGROUP'],Ngal,bins,mask)
+    avg_N_red = hod(host_ID,GC['MGROUP']*mfactor,Ngal,bins,mask)
     #Blue Galaxies
     mask = np.zeros(len(GC))
     mask[blue] = 1
-    avg_N_blue = hod(host_ID,GC['MGROUP'],Ngal,bins,mask)
+    avg_N_blue = hod(host_ID,GC['MGROUP']*mfactor,Ngal,bins,mask)
 
     #plot the results
     ax=axes[0]
