@@ -176,7 +176,7 @@ def main():
 
 def sp_in_mass_bins(GC,bins):
     x=np.zeros(len(bins)-1)
-    result = np.digitize(GC['MGROUP'],bins=bins)
+    result = np.digitize(GC['HALO_M'],bins=bins)
     for i in range(0,len(x)):
         ind = (result==i+1)
         x[i]=sat_purity(GC[ind])
@@ -184,7 +184,7 @@ def sp_in_mass_bins(GC,bins):
 
 def sc_in_mass_bins(GC,bins):
     x=np.zeros(len(bins)-1)
-    result = np.digitize(GC['MGROUP'],bins=bins)
+    result = np.digitize(GC['HALO_M'],bins=bins)
     for i in range(0,len(x)):
         ind = (result==i+1)
         x[i]=sat_comp(GC[ind])
@@ -192,7 +192,7 @@ def sc_in_mass_bins(GC,bins):
 
 def cp_in_mass_bins(GC,bins):
     x=np.zeros(len(bins)-1)
-    result = np.digitize(GC['MGROUP'],bins=bins)
+    result = np.digitize(GC['HALO_M'],bins=bins)
     for i in range(0,len(x)):
         ind = (result==i+1)
         x[i]=cen_purity(GC[ind])
@@ -200,7 +200,7 @@ def cp_in_mass_bins(GC,bins):
 
 def cc_in_mass_bins(GC,bins):
     x=np.zeros(len(bins)-1)
-    result = np.digitize(GC['MGROUP'],bins=bins)
+    result = np.digitize(GC['HALO_M'],bins=bins)
     for i in range(0,len(x)):
         ind = (result==i+1)
         x[i]=cen_comp(GC[ind])
