@@ -31,19 +31,19 @@ def main():
     axes = axes.flatten()
     #plot 1
     axes[0].set_ylabel(r'$<N(M)>$')
-    axes[0].text(10**11.5,50,'all galaxies\n  $M_r<-19$')
+    axes[0].text(10**11.5,50,'all galaxies\n  $M_r<-19+5\log(h)$')
     axes[0].set_yscale('log', nonposy='clip')
     axes[0].set_xscale('log', nonposy='clip')
     axes[0].set_ylim(0.1,200)
     axes[0].set_xlim([10**11,10**15])
     #plot 2
-    axes[1].text(10**11.5,50,'red galaxies\n  $M_r<-19$')
+    axes[1].text(10**11.5,50,'red galaxies\n  $M_r<-19+5\log(h)$')
     axes[1].set_yscale('log', nonposy='clip')
     axes[1].set_xscale('log', nonposy='clip')
     axes[1].set_ylim(0.1,200)
     axes[1].set_xlim([10**11,10**15])
     #plot 3
-    axes[2].text(10**11.5,50,'blue galaxies\n  $M_r<-19$')
+    axes[2].text(10**11.5,50,'blue galaxies\n  $M_r<-19+5\log(h)$')
     axes[2].text(10**15.15,25,'Berlind FoF groups', rotation=90)
     axes[2].set_yscale('log', nonposy='clip')
     axes[2].set_xscale('log', nonposy='clip')
