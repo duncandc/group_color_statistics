@@ -222,6 +222,9 @@ def main():
     identified_satellites = np.where(GC['RANK']!=0)[0]
     identified_centrals_bool = (GC['RANK']==0)
     
+    #which galaxies are in both?
+    
+    
     #which identified centrals are not true centrals?
     fu = np.setdiff1d(identified_centrals,true_centrals,assume_unique=True)
     
@@ -233,7 +236,7 @@ def main():
     plt.figure()
     plt.plot(bin_centers, f_fu)
     plt.ylim([0,1])
-    plt.show()
+    plt.show(block=True)
     
 
 def f_prop(prop,prop_bins,group_1,group_2,mask):

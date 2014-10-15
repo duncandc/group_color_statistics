@@ -56,6 +56,8 @@ def main():
     ind      = np.searchsorted(sorted_x,mock['ID_host'][satellites])
     ind      = index[ind] #index of centrals for each satellite
  
+    data['ID'] = mock['ID_halo']
+ 
     data['GROUP_ID']      = mock['ID_host'] #satellites
     data['GROUP_ID'][ind] = mock['ID_halo'][ind] #centrals with satellites
     
