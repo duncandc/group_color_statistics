@@ -230,6 +230,11 @@ def main():
     nfu_cen = (np.in1d(true_centrals,identified_centrals))
     fu_cen = true_centrals[fu_cen]
     
+    #which identified centrals are not true centrals?
+    fu_icen = (np.in1d(identified_centrals,true_centrals)==False)
+    nfu_cen = (np.in1d(identified_centrals,true_centrals)==False)
+    fu_icen = identified_centrals[fu_icen]
+    
     #which identified centrals are actually satellites?
     fu_sat = (np.in1d(true_satellites,identified_satellites)==False)
     nfu_sat = (np.in1d(true_satellites,identified_satellites))
@@ -238,10 +243,12 @@ def main():
     #which centrals are identified correctly?
     good = np.intersect1d(true_centrals,identified_centrals)
     
+    f_fu_icen = f_prop(GC['HALO_M'],bins,fu_icen,true_centrals[nfu_icen],identified_centrals_bool)
     f_fu_cen = f_prop(GC['HALO_M'],bins,fu_cen,true_centrals[nfu_cen],true_centrals_bool)
     f_fu_sat = f_prop(GC['HALO_M'],bins,fu_sat,true_satellites[nfu_sat],true_satellites_bool)
     
     plt.figure()
+    plt.plot(bin_centers, f_fu_icen)
     plt.plot(bin_centers, f_fu_cen)
     plt.plot(bin_centers, f_fu_sat)
     plt.ylim([0,1])
