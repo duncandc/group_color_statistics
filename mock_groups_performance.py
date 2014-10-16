@@ -223,26 +223,29 @@ def main():
     identified_centrals   = np.where(GC['RANK']==0)[0]
     identified_satellites = np.where(GC['RANK']!=0)[0]
     identified_centrals_bool = (GC['RANK']==0)
+    identified_satellites_bool = (GC['RANK']!=0)
     
     #which identified centrals are not true centrals?
-    #fu = np.setdiff1d(true_centrals,identified_centrals)
     fu_cen = (np.in1d(true_centrals,identified_centrals)==False)
+    nfu_cen = (np.in1d(true_centrals,identified_centrals))
     fu_cen = true_centrals[fu_cen]
     
     #which identified centrals are actually satellites?
     fu_sat = (np.in1d(true_satellites,identified_satellites)==False)
+    nfu_sat = (np.in1d(true_satellites,identified_satellites))
     fu_sat = true_satellites[fu_sat]
     
     #which centrals are identified correctly?
     good = np.intersect1d(true_centrals,identified_centrals)
     
-    f_fu_cen = f_prop(GC['HALO_M'],bins,fu_cen,true_centrals,true_centrals_bool)
-    f_fu_sat = f_prop(GC['HALO_M'],bins,fu_sat,true_satellites,true_satellites_bool)
+    f_fu_cen = f_prop(GC['HALO_M'],bins,fu_cen,true_centrals[nfu_cen],true_centrals_bool)
+    f_fu_icen = f_prop(GC['HALO_M'],bins,fu_icen,true_centrals[nfu_sat],true_centrals_bool)
     
     plt.figure()
     plt.plot(bin_centers, f_fu_cen)
     plt.plot(bin_centers, f_fu_sat)
     plt.ylim([0,1])
+    plt.xlim([11,15])
     plt.show(block=True)
     
 
