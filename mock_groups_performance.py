@@ -232,7 +232,7 @@ def main():
     
     #which identified centrals are not true centrals?
     fu_icen = (np.in1d(identified_centrals,true_centrals)==False)
-    nfu_icen = (np.in1d(identified_centrals,true_centrals)==False)
+    nfu_icen = (np.in1d(identified_centrals,true_centrals))
     fu_icen = identified_centrals[fu_icen]
     
     #which identified centrals are actually satellites?
@@ -248,9 +248,9 @@ def main():
     f_fu_sat = f_prop(GC['HALO_M'],bins,fu_sat,true_satellites[nfu_sat],true_satellites_bool)
     
     plt.figure()
-    plt.plot(bin_centers, f_fu_icen)
-    plt.plot(bin_centers, f_fu_cen)
-    plt.plot(bin_centers, f_fu_sat)
+    plt.plot(bin_centers, f_fu_icen, '--', color='black')
+    plt.plot(bin_centers, f_fu_cen, '-', color='black')
+    plt.plot(bin_centers, f_fu_sat, '-', color='green')
     plt.ylim([0,1])
     plt.xlim([11,15])
     plt.show(block=True)
