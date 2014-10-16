@@ -214,16 +214,13 @@ def main():
     bin_centers = (bins[:-1]+bins[1:])/2.0
     
     #which are true centrals and satellites?
-    true_centrals   = np.where(GC['HALO_RANK']==1)[0]
-    true_satellites = np.where(GC['HALO_RANK']==0)[0]
+    true_centrals   = np.where(GC['HALO_RANK']==0)[0]
+    true_satellites = np.where(GC['HALO_RANK']==1)[0]
     
     #which are identified centrals and satellites?
     identified_centrals   = np.where(GC['RANK']==0)[0]
     identified_satellites = np.where(GC['RANK']!=0)[0]
     identified_centrals_bool = (GC['RANK']==0)
-    
-    #which galaxies are in both?
-    
     
     #which identified centrals are not true centrals?
     fu = np.setdiff1d(identified_centrals,true_centrals,assume_unique=True)
