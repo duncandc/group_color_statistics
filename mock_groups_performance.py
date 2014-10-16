@@ -248,7 +248,7 @@ def main():
     
     plt.figure()
     plt.plot(bin_centers, f_fu_icen, '--', color='black')
-    plt.plot(bin_centers, f_fu_cen, '-', color='black')
+    plt.plot(bin_centers, 2.0*f_fu_cen, '-', color='black')
     plt.plot(bin_centers, f_fu_sat, '-', color='green')
     plt.ylim([0,1])
     plt.xlim([11,15])
