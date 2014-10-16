@@ -230,8 +230,8 @@ def main():
     fu_cen = true_centrals[fu_cen]
     
     #which identified centrals are actually satellites?
-    fu_sat = (np.in1d(true_satellites,identified_centrals))
-    fu_sat = true_centrals[fu_sat]
+    fu_sat = (np.in1d(true_satellites,identified_satellites)==False)
+    fu_sat = true_satellites[fu_sat]
     
     #which centrals are identified correctly?
     good = np.intersect1d(true_centrals,identified_centrals)
