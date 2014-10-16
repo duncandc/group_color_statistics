@@ -15,7 +15,8 @@ import sys
 
 def main():
 
-    catalogue = sys.argv[1]
+    if len(sys.argv)>1: catalogue = sys.argv[1]
+    else: catalogue = 'Mr19_age_distribution_matching_mock'
     
     plotpath = cu.get_plot_path() + 'analysis/groupcats/'
 
@@ -202,6 +203,9 @@ def main():
     ##### look at fraction of satellites that are more luminous than the central
     ######################################################################################
     
+    filename1 = catalogue+'_performance_fuMh'
+    filename2 = catalogue+'_performance_fuMg'
+    
     #open ideal group catalogue
     filepath_mock = cu.get_output_path() + 'processed_data/hearin_mocks/ideal_groups/'
     print 'opening mock catalogue:', catalogue+'_groups.hdf5'
@@ -257,18 +261,33 @@ def main():
     f_fu_cen_im = f_prop(GC['MGROUP'],bins,fu_cen,true_centrals[nfu_cen],true_centrals_bool)
     f_fu_sat_im = f_prop(GC['MGROUP'],bins,fu_sat,true_satellites[nfu_sat],true_satellites_bool)
     
-    plt.figure()
-    plt.plot(bin_centers, f_fu_icen, '--', color='black')
-    plt.plot(bin_centers, f_fu_cen, '-', color='black')
-    plt.plot(bin_centers, f_fu_isat, '--', color='green')
-    plt.plot(bin_centers, f_fu_sat, '-', color='green')
-    plt.plot(bin_centers, f_fu_icen_im, '--', color='black', alpha=0.2)
-    plt.plot(bin_centers, f_fu_cen_im, '-', color='black', alpha=0.2)
-    plt.plot(bin_centers, f_fu_isat_im, '--', color='green', alpha=0.2)
-    plt.plot(bin_centers, f_fu_sat_im, '-', color='green', alpha=0.2)
+    fig1 = plt.figure()
+    l1, = plt.plot(bin_centers, f_fu_icen, '--', color='black')
+    l2, = plt.plot(bin_centers, f_fu_cen, '-', color='black')
+    l3, = plt.plot(bin_centers, f_fu_isat, '--', color='green')
+    l4, = plt.plot(bin_centers, f_fu_sat, '-', color='green')
     plt.ylim([0,1])
     plt.xlim([11,15])
+    plt.xlabel(r'$M_{\rm halo}$')
+    plt.ylabel(r'$f_{fu}$')
+    plt.legend([l1,l2,l3,l4],['inferred centrals','true centrals','inferred satellites','true satellites'])
+    plt.show(block=False)
+    
+    fig1.savefig(plotpath+filename2+'.pdf')
+    
+    fig2 = plt.figure()
+    l5, = plt.plot(bin_centers, f_fu_icen_im, '--', color='black')
+    l6, = plt.plot(bin_centers, f_fu_cen_im, '-', color='black',alpha=0.5)
+    l7, = plt.plot(bin_centers, f_fu_isat_im, '--', color='green')
+    l8, = plt.plot(bin_centers, f_fu_sat_im, '-', color='green',alpha=0.5)
+    plt.ylim([0,1])
+    plt.xlim([11,15])
+    plt.xlabel(r'$M_{\rm group}$')
+    plt.ylabel(r'$f_{fu}$')
+    plt.legend([l1,l2,l3,l4],['inferred centrals','true centrals','inferred satellites','true satellites'])
     plt.show(block=True)
+    
+    fig2.savefig(plotpath+filename2+'.pdf')
     
 
 def f_prop(prop,prop_bins,group_1,group_2,mask):
