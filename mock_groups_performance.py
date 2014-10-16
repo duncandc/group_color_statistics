@@ -232,7 +232,7 @@ def main():
     
     #which identified centrals are not true centrals?
     fu_icen = (np.in1d(identified_centrals,true_centrals)==False)
-    nfu_cen = (np.in1d(identified_centrals,true_centrals)==False)
+    nfu_icen = (np.in1d(identified_centrals,true_centrals)==False)
     fu_icen = identified_centrals[fu_icen]
     
     #which identified centrals are actually satellites?
