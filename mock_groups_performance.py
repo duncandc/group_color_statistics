@@ -242,13 +242,13 @@ def main():
     nfu_sat = (np.in1d(true_satellites,identified_satellites))
     fu_sat = true_satellites[fu_sat]
     
-    f_fu_icen = f_prop(GC['HALO_M'],bins,fu_icen,identified_centrals[nfu_icen],identified_centrals_bool)
+    f_fu_icen = f_prop(GC['MGROUP'],bins,fu_icen,identified_centrals[nfu_icen],identified_centrals_bool)
     f_fu_cen = f_prop(GC['HALO_M'],bins,fu_cen,true_centrals[nfu_cen],true_centrals_bool)
     f_fu_sat = f_prop(GC['HALO_M'],bins,fu_sat,true_satellites[nfu_sat],true_satellites_bool)
     
     plt.figure()
     plt.plot(bin_centers, f_fu_icen, '--', color='black')
-    plt.plot(bin_centers, 2.0*f_fu_cen, '-', color='black')
+    plt.plot(bin_centers, f_fu_cen, '-', color='black')
     plt.plot(bin_centers, f_fu_sat, '-', color='green')
     plt.ylim([0,1])
     plt.xlim([11,15])
