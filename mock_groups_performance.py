@@ -225,7 +225,7 @@ def main():
     
     #which identified centrals are not true centrals?
     #fu = np.setdiff1d(true_centrals,identified_centrals)
-    fu = np.in1d(true_centrals,identified_centrals)
+    fu = (np.in1d(true_centrals,identified_centrals)==False)
     fu = true_centrals[fu]
     
     #which centrals are identified correctly?
