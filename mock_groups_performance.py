@@ -239,7 +239,7 @@ def main():
     good = np.intersect1d(true_centrals,identified_centrals)
     
     f_fu_cen = f_prop(GC['HALO_M'],bins,fu_cen,true_centrals[nfu_cen],true_centrals_bool)
-    f_fu_icen = f_prop(GC['HALO_M'],bins,fu_icen,true_centrals[nfu_sat],true_centrals_bool)
+    f_fu_sat = f_prop(GC['HALO_M'],bins,fu_sat,true_satellites[nfu_sat],true_satellites_bool)
     
     plt.figure()
     plt.plot(bin_centers, f_fu_cen)
