@@ -59,9 +59,10 @@ def main():
     data['ID'] = mock['ID_halo']
  
     data['GROUP_ID']      = mock['ID_host'] #satellites
-    data['GROUP_ID'][ind] = mock['ID_halo'][ind] #centrals with satellites
+    #data['GROUP_ID'][ind] = mock['ID_halo'][ind] #centrals with satellites
     
-    result = (data['GROUP_ID']==-1)
+    #result = (data['GROUP_ID']==-1)
+    result = (mock['ID_host']==-1)
     data['GROUP_ID'][result] = mock['ID_halo'][result] #centrals with no satellites
 
     data['M_g,0.1'] = mock['M_r,0.1']+mock['g-r']
@@ -104,6 +105,8 @@ def main():
         data['N_sat_blue'][members] = len(sat_blue)
         #record other group information
         data['CEN_IND'][members] = central
+
+    centrals = np.where(data['RANK']==0)[0]
 
     #read in mass halo function
     filepath = '/scratch/dac29/fortran_code/mass_functions/'
