@@ -85,16 +85,12 @@ def main():
     data['red'][red]  = 1
     data['red'][blue] = 0
 
-    N = np.float(len(data))
-    for i in range(0,len(data)):
-        print i/N
-        group_id = data['GROUP_ID'][i]
+    for group_id in np.unique(data['GROUP_ID']):
         members  = np.where(data['GROUP_ID']==group_id)[0]
         central = np.where(data['HALO_RANK'][members]==0)[0]
         central  = members[central]
-        satellites = np.where(members!=central)[0]
+        satellites = np.where(data['HALO_RANK'][members]!=0)[0]
         satellites = members[satellites]
-        #record rank
         rank = np.argsort(data['M_r,0.1'][members])
         data['RANK'][members[rank]]    = np.arange(0,len(rank))
         #record number of satellites in the group
@@ -119,9 +115,9 @@ def main():
     S_r = 4.64
     group_L = np.zeros((len(data),),dtype=np.float)
 
-    for i  in range(0,len(centrals)):
-        gal = np.where(data['GROUP_ID']==data['GROUP_ID'][centrals[i]])[0]
-        group_L[gal] = np.log10(np.sum(10.0**(solar_lum(data['M_r,0.1'][gal], S_r))))
+    for group_id in np.unique(data['GROUP_ID']):
+        members  = np.where(data['GROUP_ID']==group_id)[0]
+        group_L[members] = np.log10(np.sum(10.0**(solar_lum(data['M_r,0.1'][members], S_r))))
     tot_lum = group_L[centrals]
 
     #calculate abundance matched masses for groups
@@ -145,9 +141,11 @@ def main():
 
     data['MGROUP'][centrals[ind]] = f(np.log10(n_gal))
 
-    for i  in range(0,len(centrals)):
-        gal = np.where(data['GROUP_ID']==data['GROUP_ID'][centrals[i]])[0]
-        data['MGROUP'][gal] = data['MGROUP'][centrals[i]]
+    for group_id in np.unique(data['GROUP_ID']):
+        members  = np.where(data['GROUP_ID']==group_id)[0]
+        central = np.where(data['RANK'][members]==0)[0]
+        central  = members[central]
+        data['MGROUP'][members] = data['MGROUP'][central]
 
     print 'saving hdf5 version of the catalogue...'
     filename = catalogue+'_groups'
