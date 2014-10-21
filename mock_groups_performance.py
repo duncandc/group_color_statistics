@@ -273,7 +273,7 @@ def main():
     plt.legend([l1,l2,l3,l4],['inferred centrals','true centrals','inferred satellites','true satellites'])
     plt.show(block=False)
     
-    fig1.savefig(plotpath+filename2+'.pdf')
+    fig1.savefig(plotpath+filename1+'.pdf')
     
     fig2 = plt.figure()
     l5, = plt.plot(bin_centers, f_fu_icen_im, '--', color='black')
@@ -285,9 +285,65 @@ def main():
     plt.xlabel(r'$M_{\rm group}$')
     plt.ylabel(r'$f_{fu}$')
     plt.legend([l1,l2,l3,l4],['inferred centrals','true centrals','inferred satellites','true satellites'])
-    plt.show(block=True)
+    plt.show(block=False)
     
     fig2.savefig(plotpath+filename2+'.pdf')
+    
+    inds = np.digitize(GC['MGROUP'][identified_centrals],bins = bins)-1
+    
+    f_fu = np.zeros((len(bins)-1,))
+    for i in range(0,len(bins)-1):
+        selection = (inds==i)
+        selection = identified_centrals[selection]
+        N_bad = np.not_equal(GC['RANK'][selection],GC['HALO_RANK'][selection])
+        N_bad = np.sum(N_bad)
+        N_good = np.equal(GC['RANK'][selection],GC['HALO_RANK'][selection])
+        N_good = np.sum(N_good)
+        N_tot = len(selection)
+        print N_tot, N_good+N_bad
+        f_fu[i] = N_bad/float(N_good+N_bad)
+    
+    fig3 = plt.figure()
+    plt.plot(bin_centers,f_fu)
+    plt.ylim([0,1])
+    plt.xlim([11,15])
+    plt.xlabel(r'$M_{\rm group}$')
+    plt.ylabel(r'$f_{fu}$')
+    
+    inds = np.digitize(GC['HALO_M'][identified_centrals],bins = bins)-1
+    
+    f_fu = np.zeros((len(bins)-1,))
+    for i in range(0,len(bins)-1):
+        selection = (inds==i)
+        selection = identified_centrals[selection]
+        bad = np.not_equal(GC['RANK'][selection],GC['HALO_RANK'][selection])
+        N_bad = np.sum(bad)
+        good = np.equal(GC['RANK'][selection],GC['HALO_RANK'][selection])
+        N_good = np.sum(good)
+        N_tot = len(selection)
+        print N_tot, N_good+N_bad
+        f_fu[i] = N_bad/float(N_good+N_bad)
+    
+    plt.plot(bin_centers,f_fu)
+    plt.ylim([0,1])
+    plt.xlim([11,15])
+    plt.xlabel(r'$M_{\rm group}$')
+    plt.ylabel(r'$f_{fu}$')
+    plt.show(block=False)
+    
+    fu = np.not_equal(GC['RANK'][identified_centrals],GC['HALO_RANK'][identified_centrals])
+    nfu = np.equal(GC['RANK'][identified_centrals],GC['HALO_RANK'][identified_centrals])
+    plt.figure()
+    plt.plot(GC['HALO_M'][identified_centrals[nfu]],GC['MGROUP'][identified_centrals[nfu]],'.', color='blue')
+    plt.plot(GC['HALO_M'][identified_centrals[fu]],GC['MGROUP'][identified_centrals[fu]],'.', color='red')
+    plt.xlim([10,15])
+    plt.ylim([10,15])
+    plt.show()
+    
+    plt.figure()
+    plt.plot(GC['HALO_M'][identified_centrals[nfu]],GC['MGROUP'][identified_centrals[nfu]],'.', color='blue')
+    plt.plot(GC['HALO_M'][identified_centrals[fu]],GC['MGROUP'][identified_centrals[fu]],'.', color='red')
+    plt.show()
     
 
 def f_prop(prop,prop_bins,group_1,group_2,mask):
