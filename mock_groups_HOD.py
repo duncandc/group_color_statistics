@@ -16,7 +16,9 @@ import sys
 from HOD import hod
 
 def main():
-    catalogue = sys.argv[1]
+    
+    if len(sys.argv)>1: catalogue = sys.argv[1]
+    else: catalogue = 'Mr19_age_distribution_matching_mock'
 
     savepath = cu.get_output_path() + 'analysis/groupcats/'
     plotpath = cu.get_plot_path()   + 'analysis/groupcats/'
@@ -31,19 +33,20 @@ def main():
     axes = axes.flatten()
     #plot 1
     axes[0].set_ylabel(r'$<N(M)>$')
-    axes[0].text(10**11.5,50,'all galaxies\n$M_r<-19+5\log(h)$')
+    axes[0].text(10**11.5,50,'all galaxies\n' r'$M_r<-19+5\log(h)$')
     axes[0].set_yscale('log', nonposy='clip')
     axes[0].set_xscale('log', nonposy='clip')
     axes[0].set_ylim(0.1,200)
     axes[0].set_xlim([10**11,10**15])
+    axes[0].set_yticklabels([r' ', r'$1$', r'$10$',r'$100$'])
     #plot 2
-    axes[1].text(10**11.5,50,'red galaxies\n$M_r<-19+5\log(h)$')
+    axes[1].text(10**11.5,50,'red galaxies\n' r'$M_r<-19+5\log(h)$')
     axes[1].set_yscale('log', nonposy='clip')
     axes[1].set_xscale('log', nonposy='clip')
     axes[1].set_ylim(0.1,200)
     axes[1].set_xlim([10**11,10**15])
     #plot 3
-    axes[2].text(10**11.5,50,'blue galaxies\n$M_r<-19+5\log(h)$')
+    axes[2].text(10**11.5,50,'blue galaxies\n' r'$M_r<-19+5\log(h)$')
     axes[2].text(10**15.15,25,'Berlind FoF groups', rotation=90)
     axes[2].set_yscale('log', nonposy='clip')
     axes[2].set_xscale('log', nonposy='clip')
@@ -55,6 +58,7 @@ def main():
     axes[3].set_xscale('log', nonposy='clip')
     axes[3].set_ylim(0.1,200)
     axes[3].set_xlim([10**11,10**15])
+    axes[3].set_yticklabels([r' ', r'$1$', r'$10$',r'$100$'])
     #plot 5
     axes[4].set_yscale('log', nonposy='clip')
     axes[4].set_xscale('log', nonposy='clip')
@@ -73,12 +77,15 @@ def main():
     axes[6].set_xscale('log', nonposy='clip')
     axes[6].set_ylim(0.1,200)
     axes[6].set_xlim([10**11,10**15])
+    axes[6].set_yticklabels([r' ', r'$1$', r'$10$', '$100$'])
+    axes[6].set_xticklabels([' ', r'$10^{12}$', r'$10^{13}$', r'$10^{14}$',' '])
     #plot 8
     axes[7].set_xlabel(r'$M$ $[M_{\odot}/h]$')
     axes[7].set_yscale('log', nonposy='clip')
     axes[7].set_xscale('log', nonposy='clip')
     axes[7].set_ylim(0.1,200)
     axes[7].set_xlim([10**11,10**15])
+    axes[7].set_xticklabels([r' ', r'$10^{12}$', r'$10^{13}$', r'$10^{14}$',r' '])
     #plot 9
     axes[8].set_xlabel(r'$M$ $[M_{\odot}/h]$')
     axes[8].text(10**15.15,25,'Yang SO groups', rotation=90)
@@ -86,8 +93,7 @@ def main():
     axes[8].set_xscale('log', nonposy='clip')
     axes[8].set_ylim(0.1,200)
     axes[8].set_xlim([10**11,10**15])
-    axes[8].set_xticklabels(["", "$10^{12}$", "$10^{13}$","$10^{14}$",""])
-    axes[8].set_yticklabels(["", "$1$", "$10$","$100$"])
+    axes[8].set_xticklabels([r' ', r'$10^{12}$', r'$10^{13}$', r'$10^{14}$',r' '])
 
     bins = np.arange(10,15,0.2)
     bin_centers = (bins[:-1]+bins[1:])/2.0
@@ -231,7 +237,6 @@ def main():
     avg_N_red  = np.zeros((N_boots,len(bins)-1))
     avg_N_blue = np.zeros((N_boots,len(bins)-1))
     for boot in range(0,N_boots):
-        print boot
         #print 'opening mock group catalogue:', filepath_GC+'bootstraps/'+group_catalogue+'_'+str(boot)+'.hdf5'
         f2 = h5py.File(filepath_GC+'bootstraps/'+group_catalogue+'_'+str(boot)+'.hdf5', 'r') #open catalogue file
         GC = f2.get(group_catalogue+'_'+str(boot))
@@ -249,8 +254,6 @@ def main():
         Ngal = np.zeros(len(GC))
         Ngal[:] = 1
         host_ID = GC['GROUP_ID']
-
-        print len(np.unique(host_ID)), len(centrals)
     
         #All galaxies
         mask = np.zeros(len(GC))
@@ -296,7 +299,6 @@ def main():
     avg_N_red  = np.zeros((N_boots,len(bins)-1))
     avg_N_blue = np.zeros((N_boots,len(bins)-1))
     for boot in range(0,N_boots):
-        print boot
         #print 'opening mock group catalogue:', filepath_GC+'bootstraps/'+group_catalogue+'_'+str(boot)+'.hdf5'
         f2 = h5py.File(filepath_GC+'bootstraps/'+group_catalogue+'_'+str(boot)+'.hdf5', 'r') #open catalogue file
         GC = f2.get(group_catalogue+'_'+str(boot))
@@ -314,8 +316,6 @@ def main():
         Ngal = np.zeros(len(GC))
         Ngal[:] = 1
         host_ID = GC['GROUP_ID']
-
-        print len(np.unique(host_ID)), len(centrals)
     
         #All galaxies
         mask = np.zeros(len(GC))
@@ -360,7 +360,6 @@ def main():
     avg_N_red  = np.zeros((N_boots,len(bins)-1))
     avg_N_blue = np.zeros((N_boots,len(bins)-1))
     for boot in range(0,N_boots):
-        print boot
         #print 'opening mock group catalogue:', filepath_GC+'bootstraps/'+group_catalogue+'_'+str(boot)+'.hdf5'
         f2 = h5py.File(filepath_GC+'bootstraps/'+group_catalogue+'_'+str(boot)+'.hdf5', 'r') #open catalogue file
         GC = f2.get(group_catalogue+'_'+str(boot))
@@ -378,8 +377,6 @@ def main():
         Ngal = np.zeros(len(GC))
         Ngal[:] = 1
         host_ID = GC['GROUP_ID']
-
-        print len(np.unique(host_ID)), len(centrals)
     
         #All galaxies
         mask = np.zeros(len(GC))
@@ -410,7 +407,7 @@ def main():
     ax = axes[8]
     p3b = ax.errorbar(10**(bin_centers), avg_N_blue, yerr=avg_N_blue_err, fmt='o', color='blue', ms=3, mec='none')
 
-    plt.show(block=False)
+    plt.show(block=True)
     print plotpath+filename+'.pdf'
     fig.savefig(plotpath+filename+'.pdf')
 
