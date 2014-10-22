@@ -32,68 +32,66 @@ def main():
     fig.subplots_adjust(right=0.95, bottom=0.083, left=0.1, top=0.958)
     axes = axes.flatten()
     #plot 1
-    axes[0].set_ylabel(r'$<N(M)>$')
+    axes[0].set_ylabel(r'$\langle N(M)\rangle$')
     axes[0].text(10**11.5,50,'all galaxies\n' r'$M_r<-19+5\log(h)$')
     axes[0].set_yscale('log', nonposy='clip')
     axes[0].set_xscale('log', nonposy='clip')
-    axes[0].set_ylim(0.1,200)
+    axes[0].set_ylim([0.1,200])
     axes[0].set_xlim([10**11,10**15])
-    axes[0].set_yticklabels([r' ', r'$1$', r'$10$',r'$100$'])
     #plot 2
     axes[1].text(10**11.5,50,'red galaxies\n' r'$M_r<-19+5\log(h)$')
     axes[1].set_yscale('log', nonposy='clip')
     axes[1].set_xscale('log', nonposy='clip')
-    axes[1].set_ylim(0.1,200)
+    axes[1].set_ylim([0.1,200])
     axes[1].set_xlim([10**11,10**15])
     #plot 3
     axes[2].text(10**11.5,50,'blue galaxies\n' r'$M_r<-19+5\log(h)$')
     axes[2].text(10**15.15,25,'Berlind FoF groups', rotation=90)
     axes[2].set_yscale('log', nonposy='clip')
     axes[2].set_xscale('log', nonposy='clip')
-    axes[2].set_ylim(0.1,200)
+    axes[2].set_ylim([0.1,200])
     axes[2].set_xlim([10**11,10**15])
     #plot 4
-    axes[3].set_ylabel(r'$<N(M)>$')
+    axes[3].set_ylabel(r'$\langle N(M)\rangle$')
     axes[3].set_yscale('log', nonposy='clip')
     axes[3].set_xscale('log', nonposy='clip')
-    axes[3].set_ylim(0.1,200)
+    axes[3].set_ylim([0.1,200])
     axes[3].set_xlim([10**11,10**15])
-    axes[3].set_yticklabels([r' ', r'$1$', r'$10$',r'$100$'])
     #plot 5
     axes[4].set_yscale('log', nonposy='clip')
     axes[4].set_xscale('log', nonposy='clip')
-    axes[4].set_ylim(0.1,200)
+    axes[4].set_ylim([0.1,200])
     axes[4].set_xlim([10**11,10**15])
     #plot 6
     axes[5].text(10**15.15,25,'Tinker SO groups', rotation=90)
     axes[5].set_yscale('log', nonposy='clip')
     axes[5].set_xscale('log', nonposy='clip')
-    axes[5].set_ylim(0.1,200)
+    axes[5].set_ylim([0.1,200])
     axes[5].set_xlim([10**11,10**15])
     #plot 7
-    axes[6].set_ylabel(r'$<N(M)>$')
+    axes[6].set_ylabel(r'$\langle N(M)\rangle$')
     axes[6].set_xlabel(r'$M$ $[M_{\odot}/h]$')
     axes[6].set_yscale('log', nonposy='clip')
     axes[6].set_xscale('log', nonposy='clip')
-    axes[6].set_ylim(0.1,200)
+    axes[6].set_ylim([0.1,200])
     axes[6].set_xlim([10**11,10**15])
-    axes[6].set_yticklabels([r' ', r'$1$', r'$10$', '$100$'])
-    axes[6].set_xticklabels([' ', r'$10^{12}$', r'$10^{13}$', r'$10^{14}$',' '])
     #plot 8
     axes[7].set_xlabel(r'$M$ $[M_{\odot}/h]$')
     axes[7].set_yscale('log', nonposy='clip')
     axes[7].set_xscale('log', nonposy='clip')
-    axes[7].set_ylim(0.1,200)
+    axes[7].set_ylim([0.1,200])
     axes[7].set_xlim([10**11,10**15])
-    axes[7].set_xticklabels([r' ', r'$10^{12}$', r'$10^{13}$', r'$10^{14}$',r' '])
     #plot 9
     axes[8].set_xlabel(r'$M$ $[M_{\odot}/h]$')
     axes[8].text(10**15.15,25,'Yang SO groups', rotation=90)
     axes[8].set_yscale('log', nonposy='clip')
     axes[8].set_xscale('log', nonposy='clip')
-    axes[8].set_ylim(0.1,200)
+    axes[8].set_ylim([0.1,200])
     axes[8].set_xlim([10**11,10**15])
+    axes[8].set_xticks([10**11,10**12,10**13,10**14,10**15])
     axes[8].set_xticklabels([r' ', r'$10^{12}$', r'$10^{13}$', r'$10^{14}$',r' '])
+    axes[0].set_yticks([0.1,1.0,10.0,100.0])
+    axes[0].set_yticklabels([r' ', r'$1$', r'$10$', r'$100$'])
 
     bins = np.arange(10,15,0.2)
     bin_centers = (bins[:-1]+bins[1:])/2.0
@@ -107,8 +105,8 @@ def main():
     f1 = h5py.File(filepath_mock+catalogue+'_extended.hdf5', 'r') #open catalogue file
     mock = f1.get(catalogue+'_extended')
     mock = np.array(mock)
-    print 'length:', len(mock)
-    for name in mock.dtype.names: print '     ', name
+    #print 'length:', len(mock)
+    #for name in mock.dtype.names: print '     ', name
 
     bins = np.arange(10,15,0.2)
     bin_centers = (bins[:-1]+bins[1:])/2.0
@@ -168,8 +166,8 @@ def main():
     f1 = h5py.File(filepath_mock+catalogue+'_groups.hdf5', 'r') #open catalogue file
     GC = f1.get(catalogue+'_groups')
     GC = np.array(GC)
-    print 'length:', len(GC)
-    for name in GC.dtype.names: print '     ', name
+    #print 'length:', len(GC)
+    #for name in GC.dtype.names: print '     ', name
 
     bins = np.arange(10,15,0.2)
     bin_centers = (bins[:-1]+bins[1:])/2.0
@@ -187,8 +185,6 @@ def main():
     
     #mfactor=-1.0*np.log10(1.0/0.7)
     mfactor = 0.0
-
-    print len(np.unique(host_ID)), len(centrals)
     
     #All galaxies
     mask = np.zeros(len(GC))
