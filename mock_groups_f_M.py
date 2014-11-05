@@ -8,7 +8,9 @@ import sys
 from f_prop import f_prop
 
 def main():
-    catalogue = sys.argv[1]
+    if len(sys.argv)>1: catalogue = sys.argv[1]
+    else: catalogue = 'Mr19_age_distribution_matching_mock'
+    
     plotpath = cu.get_plot_path() + 'analysis/groupcats/'
 
     filename = catalogue+'_f_M.pdf'

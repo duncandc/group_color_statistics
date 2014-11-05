@@ -16,7 +16,9 @@ import sys
 from CLF import clf
 
 def main():
-    catalogue = sys.argv[1]
+    
+    if len(sys.argv)>1: catalogue = sys.argv[1]
+    else: catalogue = 'Mr19_age_distribution_matching_mock'
 
     savepath = cu.get_output_path() + 'analysis/groupcats/'
     plotpath = cu.get_plot_path()   + 'analysis/groupcats/'
@@ -30,24 +32,24 @@ def main():
     fig.subplots_adjust(right=0.95, bottom=0.083, left=0.1, top=0.958)
     axes = axes.flatten()
     #plot 1
-    axes[0].set_ylabel(r'$\phi(L)dlogL/group$')
-    axes[0].set_title(r'$12.5<\log(M/[M_{\odot}h^{-1}])<13.0$')
+    axes[0].set_ylabel(r'$\phi(L){\rm dlog}L/{\rm group}$')
+    axes[0].set_title(r'$12.5<\log(M/[M_{\odot}h^{-1}])<13.0$', fontsize=8)
     axes[0].set_yscale('log', nonposy='clip')
     axes[0].set_ylim(0.01,50)
     axes[0].set_xlim([9,11.5])
     #plot 2
-    axes[1].set_title(r'$13.0<\log(M/[M_{\odot}h^{-1}])<13.5$')
+    axes[1].set_title(r'$13.0<\log(M/[M_{\odot}h^{-1}])<13.5$', fontsize=8)
     axes[1].set_yscale('log', nonposy='clip')
     axes[1].set_ylim(0.01,50)
     axes[1].set_xlim([9,11.5])
     #plot 3
-    axes[2].set_title(r'$13.5<\log(M/[M_{\odot}h^{-1}])<14.0$')
+    axes[2].set_title(r'$13.5<\log(M/[M_{\odot}h^{-1}])<14.0$', fontsize=8)
     axes[2].set_yscale('log', nonposy='clip')
     axes[2].set_ylim(0.01,50)
     axes[2].set_xlim([9,11.5])
-    axes[2].text(11.05,8,'Berlind FoF groups', rotation=90)
+    axes[2].text(11.05,8,'Berlind et al. groups', rotation=90)
     #plot 4
-    axes[3].set_ylabel(r'$\phi(L)dlogL/group$')
+    axes[3].set_ylabel(r'$\phi(L){\rm dlog}L/{\rm group}$')
     axes[3].set_yscale('log', nonposy='clip')
     axes[3].set_ylim(0.01,50)
     axes[3].set_xlim([9,11.5])
@@ -59,26 +61,26 @@ def main():
     axes[5].set_yscale('log', nonposy='clip')
     axes[5].set_ylim(0.01,50)
     axes[5].set_xlim([9,11.5])
-    axes[5].text(11.05,8,'Tinker SO groups', rotation=90)
+    axes[5].text(11.05,8,'Tinker et al. groups', rotation=90)
     #plot 7
-    axes[6].set_ylabel(r'$\phi(L)dlogL/group$')
-    axes[6].set_xlabel(r'$log(L/[L_{\odot}h^{-2}])$')
+    axes[6].set_ylabel(r'$\phi(L){\rm dlog}L/{\rm group}$')
+    axes[6].set_xlabel(r'$\log(L/[L_{\odot}h^{-2}])$')
     axes[6].set_yscale('log', nonposy='clip')
     axes[6].set_ylim(0.01,50)
     axes[6].set_xlim([9,11.5])
     #plot 8
-    axes[7].set_xlabel(r'$log(L/[L_{\odot}h^{-2}])$')
+    axes[7].set_xlabel(r'$\log(L/[L_{\odot}h^{-2}])$')
     axes[7].set_yscale('log', nonposy='clip')
     axes[7].set_ylim(0.01,50)
     axes[7].set_xlim([9,11.5])
     #plot 9
-    axes[8].set_xlabel(r'$log(L/[L_{\odot}h^{-2}])$')
+    axes[8].set_xlabel(r'$\log(L/[L_{\odot}h^{-2}])$')
     axes[8].set_yscale('log', nonposy='clip')
     axes[8].set_ylim(0.01,50)
     axes[8].set_xlim([9.5,11.0])
-    axes[8].text(11.05,6,'Yang SO groups', rotation=90)
-    axes[8].set_xticklabels(["","9.6", "9.8","10.0", "10.2","10.4","10.6","10.8",""])
-    #axes[8].set_yticklabels(["", "$0.1$", "$1$","$10$"])
+    axes[8].text(11.05,6,'Yang et al. groups', rotation=90)
+    axes[8].set_xticks([9.4,9.6,9.8,10.0,10.2,10.4,10.6,10.8,11.0])
+    axes[8].set_xticklabels(["","9.6", "","10.0", "","10.4","","10.8",""])
 
     bins = np.arange(9.45,12.0,0.15)
     bin_centers = (bins[:-1]+bins[1:])/2.0
@@ -125,33 +127,35 @@ def main():
     ax=axes[0]
     p1a,=ax.plot(bin_centers, phi, color='black')
     ax=axes[0]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    p2a,=ax.plot(bin_centers, phi_red_cen, ':', color='red')
     ax=axes[0]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
-    ax=axes[3]
-    p1a,=ax.plot(bin_centers, phi, color='black')
-    ax=axes[3]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
-    ax=axes[3]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
-    ax=axes[6]
-    p1a,=ax.plot(bin_centers, phi, color='black')
-    ax=axes[6]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
-    ax=axes[6]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    p3a,=ax.plot(bin_centers, phi_blue_cen, ':', color='blue')
     ax=axes[0]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p4a,=ax.plot(bin_centers, phi_red_sat, color='red')
     ax=axes[0]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p5a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    
     ax=axes[3]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p1b,=ax.plot(bin_centers, phi, color='black')
     ax=axes[3]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p2b,=ax.plot(bin_centers, phi_red_cen, ':', color='red')
+    ax=axes[3]
+    p3b,=ax.plot(bin_centers, phi_blue_cen, ':', color='blue')
+    ax=axes[3]
+    p4b,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[3]
+    p5b,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    
     ax=axes[6]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    p1c,=ax.plot(bin_centers, phi, color='black')
     ax=axes[6]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    p2c,=ax.plot(bin_centers, phi_red_cen, ':', color='red')
+    ax=axes[6]
+    p3c,=ax.plot(bin_centers, phi_blue_cen, ':', color='blue')
+    ax=axes[6]
+    p4c,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax=axes[6]
+    p5c,=ax.plot(bin_centers, phi_blue_sat, color='blue')
 
     mass_bin = [13.0,13.5]
     phi = clf(host_ID,L,bins,mock['M_host'],mass_bin)
@@ -166,35 +170,35 @@ def main():
     print phi_blue_sat
     #plot the results
     ax=axes[1]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax.plot(bin_centers, phi, color='black')
     ax=axes[1]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax.plot(bin_centers, phi_red_cen, ':', color='red')
     ax=axes[1]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax.plot(bin_centers, phi_blue_cen, ':', color='blue')
     ax=axes[4]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax.plot(bin_centers, phi, color='black')
     ax=axes[4]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax.plot(bin_centers, phi_red_cen, ':', color='red')
     ax=axes[4]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax.plot(bin_centers, phi_blue_cen, ':', color='blue')
     ax=axes[7]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax.plot(bin_centers, phi, color='black')
     ax=axes[7]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax.plot(bin_centers, phi_red_cen, ':', color='red')
     ax=axes[7]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax.plot(bin_centers, phi_blue_cen, ':', color='blue')
     ax=axes[1]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax.plot(bin_centers, phi_red_sat, color='red')
     ax=axes[1]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax.plot(bin_centers, phi_blue_sat, color='blue')
     ax=axes[4]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax.plot(bin_centers, phi_red_sat, color='red')
     ax=axes[4]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax.plot(bin_centers, phi_blue_sat, color='blue')
     ax=axes[7]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax.plot(bin_centers, phi_red_sat, color='red')
     ax=axes[7]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax.plot(bin_centers, phi_blue_sat, color='blue')
 
     mass_bin = [13.5,14.0]
     phi = clf(host_ID,L,bins,mock['M_host'],mass_bin)
@@ -209,37 +213,37 @@ def main():
     print phi_blue_sat
     #plot the results
     ax=axes[2]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax.plot(bin_centers, phi, color='black')
     ax=axes[2]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax.plot(bin_centers, phi_red_cen, ':', color='red')
     ax=axes[2]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax.plot(bin_centers, phi_blue_cen, ':', color='blue')
     ax=axes[5]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax.plot(bin_centers, phi, color='black')
     ax=axes[5]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax.plot(bin_centers, phi_red_cen, ':', color='red')
     ax=axes[5]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax.plot(bin_centers, phi_blue_cen, ':', color='blue')
     ax=axes[8]
-    p1a,=ax.plot(bin_centers, phi, color='black')
+    ax.plot(bin_centers, phi, color='black')
     ax=axes[8]
-    p2a,=ax.plot(bin_centers, phi_red_cen, '--', color='red')
+    ax.plot(bin_centers, phi_red_cen, ':', color='red')
     ax=axes[8]
-    p3a,=ax.plot(bin_centers, phi_blue_cen, '--', color='blue')
+    ax.plot(bin_centers, phi_blue_cen, ':', color='blue')
     ax=axes[2]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax.plot(bin_centers, phi_red_sat, color='red')
     ax=axes[2]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax.plot(bin_centers, phi_blue_sat, color='blue')
     ax=axes[5]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax.plot(bin_centers, phi_red_sat, color='red')
     ax=axes[5]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax.plot(bin_centers, phi_blue_sat, color='blue')
     ax=axes[8]
-    p2a,=ax.plot(bin_centers, phi_red_sat, color='red')
+    ax.plot(bin_centers, phi_red_sat, color='red')
     ax=axes[8]
-    p3a,=ax.plot(bin_centers, phi_blue_sat, color='blue')
+    ax.plot(bin_centers, phi_blue_sat, color='blue')
 
-
+    '''
     ##########################
     #calculate for ideal groups
     ########################## 
@@ -389,7 +393,7 @@ def main():
     p2a,=ax.plot(bin_centers, phi_red_sat_3, color='red', alpha=0.5)
     ax=axes[8]
     p3a,=ax.plot(bin_centers, phi_blue_sat_3, color='blue', alpha=0.5)
-
+    '''
 
     ##########################
     #calculate mock groups CLF
@@ -496,17 +500,19 @@ def main():
     phi_blue_sat_3 = np.mean(phi_blue_sat_3,axis=0)
 
     ax=axes[0]
-    ax.errorbar(bin_centers,phi_1,yerr=phi_err_1, fmt='o', color='black', ms=4, mec='none')
+    p1 = ax.errorbar(bin_centers,phi_1,yerr=phi_err_1, fmt='o', color='black', ms=4, mec='none')
     ax.plot(bin_centers,phi_red_cen_1, 'o', mec='red',mew=1.1, ms=4, mfc='none')
     ax.plot(bin_centers,phi_blue_cen_1, 'o', mec='blue',mew=1.1, ms=4, mfc='none')
     ax.plot(bin_centers,phi_red_sat_1, 'o', color='red', ms=4, mec='none')
     ax.plot(bin_centers,phi_blue_sat_1, 'o', color='blue', ms=4, mec='none')
+    ax.legend([p1],['group catalogue'], frameon=False, fontsize=10, numpoints=1)
     ax=axes[1]
     ax.errorbar(bin_centers,phi_2,yerr=phi_err_2, fmt='o', color='black', ms=4, mec='none')
     ax.plot(bin_centers,phi_red_cen_2, 'o', mec='red',mew=1.1, ms=4, mfc='none')
     ax.plot(bin_centers,phi_blue_cen_2, 'o', mec='blue',mew=1.1, ms=4, mfc='none')
     ax.plot(bin_centers,phi_red_sat_2, 'o', color='red', ms=4, mec='none')
     ax.plot(bin_centers,phi_blue_sat_2, 'o', color='blue', ms=4, mec='none')
+    ax.legend([p1a],['mock'], frameon=False, fontsize=10, numpoints=1)
     ax=axes[2]
     ax.errorbar(bin_centers,phi_3,yerr=phi_err_3, fmt='o', color='black', ms=4, mec='none')
     ax.plot(bin_centers,phi_red_cen_3, 'o', mec='red',mew=1.1, ms=4, mfc='none')
@@ -621,16 +627,18 @@ def main():
 
     ax=axes[3]
     ax.errorbar(bin_centers,phi_1,yerr=phi_err_1, fmt='o', color='black', ms=4, mec='none')
-    ax.plot(bin_centers,phi_red_cen_1, 'o', mec='red',mew=1.1, ms=4, mfc='none')
-    ax.plot(bin_centers,phi_blue_cen_1, 'o', mec='blue',mew=1.1, ms=4, mfc='none')
+    p1, = ax.plot(bin_centers,phi_red_cen_1, 'o', mec='red',mew=1.1, ms=4, mfc='none')
+    p2, = ax.plot(bin_centers,phi_blue_cen_1, 'o', mec='blue',mew=1.1, ms=4, mfc='none')
     ax.plot(bin_centers,phi_red_sat_1, 'o', color='red', ms=4, mec='none')
     ax.plot(bin_centers,phi_blue_sat_1, 'o', color='blue', ms=4, mec='none')
+    ax.legend([p1,p2],['red group centrals', 'blue group centrals'], frameon=False, fontsize=10, numpoints=1)
     ax=axes[4]
     ax.errorbar(bin_centers,phi_2,yerr=phi_err_2, fmt='o', color='black', ms=4, mec='none')
     ax.plot(bin_centers,phi_red_cen_2, 'o', mec='red',mew=1.1, ms=4, mfc='none')
     ax.plot(bin_centers,phi_blue_cen_2, 'o', mec='blue',mew=1.1, ms=4, mfc='none')
     ax.plot(bin_centers,phi_red_sat_2, 'o', color='red', ms=4, mec='none')
     ax.plot(bin_centers,phi_blue_sat_2, 'o', color='blue', ms=4, mec='none')
+    ax.legend([p2a,p3a],['red mock centrals', 'blue mock centrals'], frameon=False, fontsize=10, numpoints=1)
     ax=axes[5]
     ax.errorbar(bin_centers,phi_3,yerr=phi_err_3, fmt='o', color='black', ms=4, mec='none')
     ax.plot(bin_centers,phi_red_cen_3, 'o', mec='red',mew=1.1, ms=4, mfc='none')
@@ -747,14 +755,16 @@ def main():
     ax.errorbar(bin_centers,phi_1,yerr=phi_err_1, fmt='o', color='black', ms=4, mec='none')
     ax.plot(bin_centers,phi_red_cen_1, 'o', mec='red',mew=1.1, ms=4, mfc='none')
     ax.plot(bin_centers,phi_blue_cen_1, 'o', mec='blue',mew=1.1, ms=4, mfc='none')
-    ax.plot(bin_centers,phi_red_sat_1, 'o', color='red', ms=4, mec='none')
-    ax.plot(bin_centers,phi_blue_sat_1, 'o', color='blue', ms=4, mec='none')
+    p1, = ax.plot(bin_centers,phi_red_sat_1, 'o', color='red', ms=4, mec='none')
+    p2, = ax.plot(bin_centers,phi_blue_sat_1, 'o', color='blue', ms=4, mec='none')
+    ax.legend([p1,p2],['red group satellites', 'blue group satellites'], frameon=False, fontsize=10, numpoints=1)
     ax=axes[7]
     ax.errorbar(bin_centers,phi_2,yerr=phi_err_2, fmt='o', color='black', ms=4, mec='none')
     ax.plot(bin_centers,phi_red_cen_2, 'o', mec='red',mew=1.1, ms=4, mfc='none')
     ax.plot(bin_centers,phi_blue_cen_2, 'o', mec='blue',mew=1.1, ms=4, mfc='none')
     ax.plot(bin_centers,phi_red_sat_2, 'o', color='red', ms=4, mec='none')
     ax.plot(bin_centers,phi_blue_sat_2, 'o', color='blue', ms=4, mec='none')
+    ax.legend([p4a,p5a],['red mock satellites', 'blue mock satellites'], frameon=False, fontsize=10, numpoints=1)
     ax=axes[8]
     ax.errorbar(bin_centers,phi_3,yerr=phi_err_3, fmt='o', color='black', ms=4, mec='none')
     ax.plot(bin_centers,phi_red_cen_3, 'o', mec='red', mew=1.1, ms=4, mfc='none')
@@ -762,7 +772,7 @@ def main():
     ax.plot(bin_centers,phi_red_sat_3, 'o', color='red', ms=4, mec='none')
     ax.plot(bin_centers,phi_blue_sat_3, 'o', color='blue', ms=4, mec='none')
 
-    plt.show(block=False)
+    plt.show(block=True)
     print plotpath+filename+'.pdf'
     fig.savefig(plotpath+filename+'.pdf')
 

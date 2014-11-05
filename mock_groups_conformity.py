@@ -529,7 +529,7 @@ def main():
 
 
     ######################################################################################
-
+    """
 
     group_cat = 'yang_mocks'
 
@@ -695,7 +695,7 @@ def main():
     p1=ax.errorbar(mass_bins[0:-1][selection],f_blue[selection],yerr=err_blue[selection], fmt='o', color='blue', mec='none', ms=3)
     selection = np.where( N_red > 50)[0]
     p2=ax.errorbar(mass_bins[0:-1][selection],f_red[selection], yerr=err_red[selection], fmt='o', color='red', mec='none', ms=3)
-
+    """
 
     ######################################################################################
     ######################################################################################
@@ -1173,7 +1173,7 @@ def main():
 
 
     ######################################################################################
-
+    """
 
     group_cat = 'yang_mocks'
 
@@ -1339,7 +1339,7 @@ def main():
     p1=ax.errorbar(mass_bins[0:-1][selection],f_blue[selection],yerr=err_blue[selection], fmt='o', color='blue', mec='none', ms=3)
     selection = np.where( N_red > 50)[0]
     p2=ax.errorbar(mass_bins[0:-1][selection],f_red[selection], yerr=err_red[selection], fmt='o', color='red', mec='none', ms=3)
-
+    """
 
     ######################################################################################
     ######################################################################################

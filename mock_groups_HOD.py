@@ -200,24 +200,25 @@ def main():
     avg_N_blue = hod(host_ID,GC['MGROUP']+mfactor,Ngal,bins,mask)
 
     #plot the results
+    alpha=1
     ax=axes[0]
-    p1a,=ax.plot(10**bin_centers, avg_N_all, color='black', alpha=0.5)
+    pppp, =ax.plot(10**bin_centers, avg_N_all, ':', color='black', alpha=alpha, fillstyle='none')
     ax=axes[1]
-    p2a,=ax.plot(10**bin_centers, avg_N_red, color='red', alpha=0.5)
+    p2c,=ax.plot(10**bin_centers, avg_N_red, ':', color='red', alpha=alpha, fillstyle='none')
     ax=axes[2]
-    p3a,=ax.plot(10**bin_centers, avg_N_blue, color='blue', alpha=0.5)
+    p3a,=ax.plot(10**bin_centers, avg_N_blue, ':', color='blue', alpha=alpha, fillstyle='none')
     ax=axes[3]
-    ax.plot(10**bin_centers, avg_N_all, color='black', alpha=0.5)
+    ax.plot(10**bin_centers, avg_N_all, ':', color='black', alpha=alpha, fillstyle='none')
     ax=axes[4]
-    ax.plot(10**bin_centers, avg_N_red, color='red', alpha=0.5)
+    ax.plot(10**bin_centers, avg_N_red, ':', color='red', alpha=alpha, fillstyle='none')
     ax=axes[5]
-    ax.plot(10**bin_centers, avg_N_blue, color='blue', alpha=0.5)
+    ax.plot(10**bin_centers, avg_N_blue, ':', color='blue', alpha=alpha, fillstyle='none')
     ax=axes[6]
-    ax.plot(10**bin_centers, avg_N_all, color='black', alpha=0.5)
+    ax.plot(10**bin_centers, avg_N_all, ':', color='black', alpha=alpha, fillstyle='none')
     ax=axes[7]
-    ax.plot(10**bin_centers, avg_N_red, color='red', alpha=0.5)
+    ax.plot(10**bin_centers, avg_N_red, ':', color='red', alpha=alpha, fillstyle='none')
     ax=axes[8]
-    ax.plot(10**bin_centers, avg_N_blue, color='blue', alpha=0.5)
+    ax.plot(10**bin_centers, avg_N_blue, ':', color='blue', alpha=alpha, fillstyle='none')
 
     ##########################
     #calculate mock groups HOD
@@ -275,7 +276,7 @@ def main():
     #plot the results with error bars ontop of the mock result
     ax = axes[0]
     p1b = ax.errorbar(10**bin_centers, avg_N_all, yerr=avg_N_all_err, fmt='o', color='black', ms=3, mec='none')
-    ax.legend((p1a,p1b),('halo level','group level'), loc='lower right', fontsize=10, numpoints=1, frameon=False )
+    ax.legend((p1a,p1b),('mock','group catalogue'), loc='lower right', fontsize=10, numpoints=1, frameon=False )
     ax = axes[1]
     p2b = ax.errorbar(10**bin_centers, avg_N_red, yerr=avg_N_red_err, fmt='o', color='red', ms=3, mec='none')
     ax = axes[2]
@@ -337,6 +338,7 @@ def main():
     #plot the results with error bars ontop of the mock result
     ax = axes[3]
     p1b = ax.errorbar(10**bin_centers, avg_N_all, yerr=avg_N_all_err, fmt='o', color='black', ms=3, mec='none')
+    ax.legend([pppp],['limit of ``perfect" \n group membership'], loc='lower right', fontsize=10, numpoints=1, frameon=False )
     ax = axes[4]
     p2b = ax.errorbar(10**bin_centers, avg_N_red, yerr=avg_N_red_err, fmt='o', color='red', ms=3, mec='none')
     ax = axes[5]

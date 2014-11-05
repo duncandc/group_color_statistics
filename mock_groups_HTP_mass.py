@@ -9,10 +9,12 @@ def main():
     import custom_utilities as cu
     import sys
 
-    group_cat = sys.argv[1]  # tinker_mocks, berlind_mocks, yang_mocks
-    catalogue = sys.argv[2]  # Mr19_age_distribution_matching_mock, Mr19_age_distribution_matching_mock_sys_empty_shuffle_satrel_shuffle
+    if len(sys.argv)>1: group_cat = sys.argv[1]
+    else: group_cat = 'tinker_mocks'
+    if len(sys.argv)>2: catalogue = sys.argv[2]
+    else: catalogue = 'Mr19_age_distribution_matching_mock'
 
-    filename=catalogue+'_HTP'
+    filename=catalogue+'_HTP_mass'
 
     if group_cat == 'tinker_mocks':
         filepath = cu.get_output_path() + 'processed_data/tinker_groupcat/mock_runs/4th_run/custom_catalogues/'
@@ -42,7 +44,7 @@ def main():
     halo_satellites  = np.where(GC['HALO_RANK']!=1)[0]
 
     #define group/halo mass bins
-    mass_bins = np.arange(11,15.2,0.2)
+    mass_bins = np.arange(11,15.2,0.1)
     bin_width = mass_bins[1]-mass_bins[0]
     bin_centers = (mass_bins[:-1]-mass_bins[1:])/2.0
 
@@ -52,8 +54,8 @@ def main():
     #plot the results
     fig = plot_htp(H, mass_bins)
     plt.show(block=True)
-    #print plotpath+filename+'.eps'
-    #fig.savefig(plotpath+filename+'.eps') 
+    print plotpath+filename+'.eps'
+    fig.savefig(plotpath+filename+'.eps') 
 
 def htp(inf_mass, halo_mass, inf_cen, inf_sat, halo_cen, halo_sat, mass_bins):
     #returns the halo transition probability given:
@@ -88,18 +90,23 @@ def plot_htp(H, mass_bins):
 
     sums = np.sum(H,axis=1)
 
-    fig, axes = plt.subplots(nrows=1, ncols=1, sharex=True, sharey=True)
+    fig, axes = plt.subplots(nrows=1, ncols=1, sharex=True, sharey=True, figsize=(3.3,3.3))
     fig.subplots_adjust(hspace=0,wspace=0.05)
-    fig.subplots_adjust(right=0.85, bottom=0.2)
+    fig.subplots_adjust(left=0.2, right=0.8, bottom=0.2,top=0.9)
 
     ax = axes
     X, Y = np.meshgrid(xedges, yedges)
-    ax.pcolormesh(X, Y, H.T, vmin=0.001, vmax=1,cmap='Oranges', norm=matplotlib.colors.LogNorm())
+    p = ax.pcolormesh(X, Y, H.T, vmin=0.001, vmax=1,cmap='Oranges', norm=matplotlib.colors.LogNorm())
     ax.plot([min(mass_bins),max(mass_bins)],[min(mass_bins),max(mass_bins)],color='white')
     ax.set_ylabel(r'$log(M_{halo}) [M_{\odot}h^{-1}]$')
     ax.set_yticks([11.5,12,12.5,13,13.5,14,14.5])
     ax.set_xlabel(r'$log(M_{group}) [M_{\odot}h^{-1}]$')
     ax.set_xticks([11.5,12,12.5,13,13.5,14,14.5])
+    
+    cbar_ax = fig.add_axes([0.875, 0.2, 0.025, 0.7])
+    fig.colorbar(mappable=p,cax=cbar_ax)
+    cbar_ax.set_ylabel('frequency')
+    cbar_ax.set_yticklabels(['','0.01','0.1','1'])
    
     return fig 
 
