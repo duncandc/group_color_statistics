@@ -1,0 +1,22 @@
+name group_finder Ngal Ngroups fsat z_min z_max
+Mr19_age_distribution_matching_mock tinker 63917 47216 0.26123 0.020004 0.067993
+cen_shuffle tinker 63917 47090 0.26318 0.020004 0.067993
+satsys_shuffle tinker 64057 47298 0.26172 0.020004 0.067993
+sys_empty_shuffle tinker 64173 48322 0.24695 0.020004 0.067993
+sys_empty_shuffle_satsys_shuffle tinker 64112 48200 0.24817 0.020004 0.067993
+sys_empty_shuffle_cen_shuffle tinker 64173 48325 0.24695 0.020004 0.067993
+sys_empty_shuffle_satrel_shuffle tinker 64284 48375 0.24744 0.020004 0.067993
+Mr19_age_distribution_matching_mock berlind 63917 35155 0.44995 0.020004 0.067993
+cen_shuffle berlind 63917 35155 0.44995 0.020004 0.067993
+satsys_shuffle berlind 64057 35302 0.44897 0.020004 0.067993
+sys_empty_shuffle berlind 64173 37360 0.41772 0.020004 0.067993
+sys_empty_shuffle_satsys_shuffle berlind 64112 37385 0.41699 0.020004 0.067993
+sys_empty_shuffle_cen_shuffle berlind 64173 37360 0.41772 0.020004 0.067993
+sys_empty_shuffle_satrel_shuffle berlind 64284 37449 0.41748 0.020004 0.067993
+Mr19_age_distribution_matching_mock yang 64034 44758 0.30103 0.017685 0.072937
+-  0 0 0.0 0.0 0.0
+-  0 0 0.0 0.0 0.0
+-  0 0 0.0 0.0 0.0
+-  0 0 0.0 0.0 0.0
+-  0 0 0.0 0.0 0.0
+sys_empty_shuffle_satrel_shuffle yang 64270 46856 0.271 0.017578 0.07135
